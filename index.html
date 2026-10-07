@@ -1,11 +1,17 @@
-```html
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CHIEFKID COLLECTIVE</title>
+
+    <meta
+        name="description"
+        content="CHIEFKID COLLECTIVE — Independent electronic music collective."
+    >
 
     <style>
 
@@ -24,11 +30,15 @@
         }
 
         body {
-            min-height: 100vh;
+            background: #050505;
+            color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
-            background: #080808;
             overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
 
@@ -38,57 +48,38 @@
 
         .background-video {
             position: fixed;
-            inset: -40px;
+            inset: -70px;
 
-            width: calc(100% + 80px);
-            height: calc(100% + 80px);
+            width: calc(100% + 140px);
+            height: calc(100% + 140px);
 
             object-fit: cover;
 
-            /*
-               DESENFOQUE DEL FONDO
-               40px = desenfoque fuerte
-            */
-            filter: blur(40px);
+            filter:
+                blur(40px)
+                brightness(0.42)
+                saturate(1.15);
 
             transform: scale(1.08);
 
-            z-index: -3;
+            z-index: -5;
             pointer-events: none;
         }
-
-
-        /* =========================================================
-           BACKGROUND OVERLAY
-        ========================================================= */
 
         .background-overlay {
             position: fixed;
             inset: 0;
 
-            width: 100%;
-            height: 100%;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,0.30) 0%,
+                    rgba(0,0,0,0.48) 45%,
+                    rgba(0,0,0,0.78) 100%
+                );
 
-            background: rgba(0, 0, 0, 0.38);
-
-            z-index: -2;
+            z-index: -4;
             pointer-events: none;
-        }
-
-
-        /* =========================================================
-           CONTENEDOR PRINCIPAL
-        ========================================================= */
-
-        .site {
-            width: 100%;
-            min-height: 100vh;
-
-            margin: 0;
-            padding: 0;
-
-            background: transparent;
-            border: none;
         }
 
 
@@ -103,121 +94,95 @@
             left: 0;
 
             width: 100%;
-            height: 52px;
-
-            background: rgba(255, 255, 255, 0.08);
-
-            backdrop-filter: blur(0px);
-            -webkit-backdrop-filter: blur(0px);
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            height: 68px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 18px;
+            padding: 0 32px;
 
-            z-index: 100;
+            background: rgba(0,0,0,0.08);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+
+            z-index: 1000;
 
             transition:
                 height 0.35s ease,
                 background 0.35s ease,
                 backdrop-filter 0.35s ease,
-                padding 0.35s ease,
-                border-color 0.35s ease;
+                padding 0.35s ease;
         }
-
-
-        /* =========================================================
-           HEADER CUANDO SE HACE SCROLL
-        ========================================================= */
 
         header.scrolled {
+            height: 42px;
 
-            height: 34px;
+            padding: 0 24px;
 
-            background: rgba(255, 255, 255, 0.88);
+            background:
+                rgba(255,255,255,0.92);
 
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-
-            padding: 0 14px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
-
-
-        /* =========================================================
-           LOGO DEL HEADER
-        ========================================================= */
 
         .header-logo {
             height: 100%;
 
             display: flex;
             align-items: center;
-            justify-content: flex-start;
         }
 
         .header-logo img {
-            display: block;
-
             width: auto;
-            height: 22px;
+            height: 27px;
 
             object-fit: contain;
 
-            transition:
-                height 0.35s ease,
-                filter 0.35s ease;
+            transition: height 0.35s ease;
         }
 
-
-        /* Logo más pequeño al hacer scroll */
-
         header.scrolled .header-logo img {
-            height: 16px;
+            height: 19px;
         }
 
 
         /* =========================================================
-           NAV
+           NAVIGATION
         ========================================================= */
 
         nav {
             display: flex;
             align-items: center;
 
-            gap: 28px;
+            gap: 34px;
         }
 
         nav a {
-            color: #fff;
-
-            text-decoration: none;
-
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 900;
 
             text-transform: uppercase;
+            letter-spacing: 0.7px;
 
-            line-height: 1;
+            color: #ffffff;
 
             transition:
-                color 0.35s ease,
-                opacity 0.2s ease;
+                color 0.25s ease,
+                opacity 0.25s ease;
         }
 
         nav a:hover {
             opacity: 0.45;
         }
 
-
-        /* NAV NEGRO CUANDO BAJA */
-
         header.scrolled nav a {
-            color: #000;
+            color: #000000;
         }
 
 
@@ -226,174 +191,316 @@
         ========================================================= */
 
         .hero {
-            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                110px 30px
+                80px;
+        }
+
+        .hero-content {
+            width: min(850px, 88vw);
 
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            padding-top: 145px;
-            padding-bottom: 70px;
-        }
-
-
-        /* =========================================================
-           LOGO PRINCIPAL
-        ========================================================= */
-
-        .logo-container {
-
-            width: min(75vw, 700px);
-
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
         }
 
         .main-logo {
-
-            display: block;
-
             width: 100%;
             height: auto;
 
-            object-fit: contain;
+            display: block;
         }
 
-
-        /* =========================================================
-           COLLECTIVE
-        ========================================================= */
-
-        .collective {
-
+        .hero-subtitle {
             width: 100%;
 
             display: flex;
             justify-content: flex-end;
-            align-items: center;
 
-            margin-top: 8px;
-
-            color: #fff;
+            margin-top: 10px;
 
             font-size: 15px;
             font-weight: 900;
 
-            line-height: 1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-line {
+            width: 100%;
+
+            margin-top: 28px;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,0.30);
+        }
+
+        .hero-description {
+            width: 100%;
+
+            margin-top: 18px;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 9px;
+            font-weight: 700;
 
             text-transform: uppercase;
+            letter-spacing: 1px;
+
+            opacity: 0.7;
         }
 
 
         /* =========================================================
-           SOUNDCLOUD
+           GENERAL SECTIONS
         ========================================================= */
 
-        .soundcloud-section {
-
-            display: flex;
-            justify-content: center;
-
-            margin-top: 10px;
-            margin-bottom: 60px;
+        section {
+            width: 100%;
         }
 
-        .soundcloud-player {
+        .section {
+            width: min(1180px, calc(100% - 70px));
 
-            width: 420px;
-            height: 110px;
+            margin: 0 auto;
 
-            background: #eeeeee;
+            padding:
+                110px 0;
+        }
 
+        .section-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            justify-content: space-between;
 
-            color: #000;
+            margin-bottom: 35px;
 
-            font-size: 13px;
+            border-bottom:
+                1px solid rgba(255,255,255,0.25);
+
+            padding-bottom: 13px;
+        }
+
+        .section-number {
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 4vw, 48px);
+
             font-weight: 900;
 
             text-transform: uppercase;
+
+            letter-spacing: -1.5px;
         }
 
 
         /* =========================================================
-           TITULOS DE SECCIONES
+           RELEASE
         ========================================================= */
 
-        .section-title {
+        .release-layout {
+            display: grid;
 
-            text-align: center;
+            grid-template-columns:
+                0.75fr 1.25fr;
 
-            color: #fff;
+            gap: 35px;
 
-            /*
-               MÁS GRANDE
-               Estos NO son los textos del menú superior.
-            */
+            align-items: stretch;
+        }
 
-            font-size: 22px;
+        .release-art {
+            min-height: 390px;
+
+            overflow: hidden;
+
+            background: #111;
+        }
+
+        .release-art img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.6s ease;
+        }
+
+        .release-art:hover img {
+            transform: scale(1.04);
+        }
+
+        .release-player {
+            min-height: 390px;
+
+            background:
+                rgba(0,0,0,0.68);
+
+            border:
+                1px solid rgba(255,255,255,0.14);
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .release-label {
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            opacity: 0.55;
+
+            margin-bottom: 12px;
+        }
+
+        .release-title {
+            font-size: clamp(26px, 4vw, 44px);
 
             font-weight: 900;
 
             text-transform: uppercase;
 
             margin-bottom: 25px;
+        }
 
-            letter-spacing: 0.5px;
+        .soundcloud-wrapper {
+            width: 100%;
+        }
+
+        .soundcloud-wrapper iframe {
+            width: 100%;
+
+            height: 166px;
+
+            border: 0;
+        }
+
+        .release-link {
+            margin-top: 20px;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            opacity: 0.65;
         }
 
 
         /* =========================================================
-           ARTISTAS
+           ARTISTS
         ========================================================= */
 
-        .artists {
-
-            width: calc(100% - 65px);
-
-            max-width: 920px;
-
-            margin: 0 auto 70px;
-
+        .artists-grid {
             display: grid;
 
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
 
-            gap: 18px 18px;
+            gap: 16px;
         }
 
-
-        .artist {
+        .artist-card {
+            position: relative;
 
             aspect-ratio: 1 / 1;
 
-            background: #000;
+            overflow: hidden;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #fff;
-
-            font-size: 14px;
-
-            font-weight: 900;
+            background: #111;
 
             cursor: pointer;
-
-            transition:
-                transform 0.2s ease,
-                opacity 0.2s ease;
         }
 
-        .artist:hover {
+        .artist-card img {
+            width: 100%;
+            height: 100%;
 
-            transform: scale(1.025);
+            object-fit: cover;
 
-            opacity: 0.85;
+            display: block;
+
+            filter:
+                grayscale(15%)
+                brightness(0.75);
+
+            transition:
+                transform 0.55s ease,
+                filter 0.55s ease;
+        }
+
+        .artist-card:hover img {
+            transform: scale(1.07);
+
+            filter:
+                grayscale(0%)
+                brightness(0.95);
+        }
+
+        .artist-info {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding: 25px 20px 18px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.85)
+                );
+        }
+
+        .artist-name {
+            font-size: 18px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+        .artist-type {
+            margin-top: 5px;
+
+            font-size: 8px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            opacity: 0.6;
         }
 
 
@@ -401,80 +508,181 @@
            STEMS / REMIXES
         ========================================================= */
 
-        .stems {
-
-            width: calc(100% - 65px);
-
-            max-width: 920px;
-
-            margin: 0 auto;
-        }
-
-
-        .remixes {
-
+        .remix-grid {
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                repeat(2, 1fr);
 
-            gap: 110px;
-
-            margin-top: 10px;
+            gap: 18px;
         }
 
+        .remix-card {
+            position: relative;
 
-        .remix {
+            min-height: 270px;
 
-            height: 46px;
+            overflow: hidden;
 
-            background: #000;
+            background: #111;
+        }
 
-            color: #fff;
+        .remix-card img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter:
+                brightness(0.48)
+                saturate(1.15);
+
+            transition:
+                transform 0.55s ease,
+                filter 0.55s ease;
+        }
+
+        .remix-card:hover img {
+            transform: scale(1.06);
+
+            filter:
+                brightness(0.65)
+                saturate(1.3);
+        }
+
+        .remix-content {
+            position: absolute;
+
+            inset: 0;
 
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
 
-            font-size: 14px;
+            justify-content: flex-end;
 
+            padding: 28px;
+        }
+
+        .remix-tag {
+            font-size: 8px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            opacity: 0.65;
+
+            margin-bottom: 8px;
+        }
+
+        .remix-title {
+            font-size: 25px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+        .remix-button {
+            width: fit-content;
+
+            margin-top: 17px;
+
+            padding:
+                9px 14px;
+
+            border:
+                1px solid rgba(255,255,255,0.5);
+
+            font-size: 8px;
             font-weight: 900;
 
             text-transform: uppercase;
 
-            cursor: pointer;
-
-            transition: opacity 0.2s ease;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease;
         }
 
-        .remix:hover {
-
-            opacity: 0.75;
+        .remix-button:hover {
+            background: #ffffff;
+            color: #000000;
         }
 
 
         /* =========================================================
-           CONTACTO
+           SUBMISSION
         ========================================================= */
 
-        .contact {
+        .submission {
+            min-height: 550px;
 
-            width: calc(100% - 72px);
+            display: flex;
+            flex-direction: column;
 
-            max-width: 920px;
+            justify-content: center;
 
-            margin: 75px auto 0;
+            border-top:
+                1px solid rgba(255,255,255,0.2);
         }
 
+        .submission-title {
+            max-width: 900px;
 
-        .contact-title {
+            font-size:
+                clamp(42px, 8vw, 105px);
 
-            color: #fff;
+            font-weight: 900;
 
-            font-size: 22px;
+            line-height: 0.9;
+
+            letter-spacing: -5px;
+
+            text-transform: uppercase;
+        }
+
+        .submission-text {
+            max-width: 620px;
+
+            margin-top: 35px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            line-height: 1.7;
+
+            text-transform: uppercase;
+
+            opacity: 0.65;
+        }
+
+        .submission-email {
+            margin-top: 30px;
+
+            width: fit-content;
+
+            font-size:
+                clamp(18px, 3vw, 32px);
 
             font-weight: 900;
 
             text-transform: uppercase;
+
+            border-bottom:
+                2px solid #ffffff;
+
+            padding-bottom: 6px;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+        .submission-email:hover {
+            opacity: 0.5;
         }
 
 
@@ -483,231 +691,242 @@
         ========================================================= */
 
         footer {
+            width: min(1180px, calc(100% - 70px));
 
-            height: 160px;
+            margin: 0 auto;
+
+            padding:
+                35px 0 45px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.2);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-left {
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            opacity: 0.5;
+        }
+
+        .socials {
+            display: flex;
+
+            gap: 25px;
+        }
+
+        .socials a {
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+        .socials a:hover {
+            opacity: 0.45;
         }
 
 
         /* =========================================================
-           RESPONSIVE
+           MOBILE
         ========================================================= */
 
-        @media (max-width: 700px) {
-
-
-            /* HEADER */
+        @media (max-width: 800px) {
 
             header {
+                height: 58px;
 
-                height: 48px;
-
-                padding: 0 10px;
+                padding: 0 16px;
             }
-
 
             header.scrolled {
+                height: 38px;
 
-                height: 32px;
-
-                padding: 0 10px;
+                padding: 0 13px;
             }
-
 
             .header-logo img {
-
-                height: 19px;
+                height: 23px;
             }
-
 
             header.scrolled .header-logo img {
-
-                height: 15px;
+                height: 17px;
             }
 
-
             nav {
-
                 gap: 13px;
             }
 
-
-            /*
-               EL MENÚ SIGUE PEQUEÑO
-            */
-
             nav a {
-
                 font-size: 6px;
+                letter-spacing: 0.4px;
             }
-
-
-            /* HERO */
 
             .hero {
-
-                padding-top: 110px;
-
-                padding-bottom: 50px;
+                padding:
+                    100px 20px
+                    65px;
             }
 
-
-            .logo-container {
-
-                width: 78vw;
+            .hero-content {
+                width: 90vw;
             }
 
-
-            .collective {
-
+            .hero-subtitle {
                 font-size: 11px;
-
-                margin-top: 6px;
             }
 
-
-            /* SOUNDCLOUD */
-
-            .soundcloud-section {
-
-                margin-bottom: 45px;
+            .hero-description {
+                font-size: 7px;
+                line-height: 1.5;
             }
 
+            .section {
+                width: calc(100% - 35px);
 
-            .soundcloud-player {
-
-                width: 75%;
-
-                height: 92px;
-
-                font-size: 10px;
+                padding:
+                    75px 0;
             }
 
-
-            /* TITULOS */
+            .section-header {
+                margin-bottom: 22px;
+            }
 
             .section-title {
-
-                font-size: 18px;
-
-                margin-bottom: 18px;
+                font-size: 25px;
             }
 
-
-            /* ARTISTAS */
-
-            .artists {
-
-                width: calc(100% - 35px);
-
-                grid-template-columns: repeat(2, 1fr);
-
-                gap: 12px;
-
-                margin-bottom: 55px;
-            }
-
-
-            .artist {
-
-                font-size: 11px;
-            }
-
-
-            /* STEMS */
-
-            .stems {
-
-                width: calc(100% - 35px);
-            }
-
-
-            .remixes {
+            .release-layout {
+                grid-template-columns: 1fr;
 
                 gap: 15px;
             }
 
-
-            .remix {
-
-                height: 40px;
-
-                font-size: 11px;
+            .release-art {
+                min-height: 300px;
             }
 
+            .release-player {
+                min-height: auto;
 
-            /* CONTACT */
-
-            .contact {
-
-                width: calc(100% - 40px);
-
-                margin-top: 55px;
+                padding: 22px;
             }
 
-
-            .contact-title {
-
-                font-size: 18px;
+            .soundcloud-wrapper iframe {
+                height: 166px;
             }
+
+            .artists-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 10px;
+            }
+
+            .artist-name {
+                font-size: 13px;
+            }
+
+            .artist-type {
+                font-size: 6px;
+            }
+
+            .remix-grid {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+            }
+
+            .remix-card {
+                min-height: 230px;
+            }
+
+            .remix-title {
+                font-size: 21px;
+            }
+
+            .submission {
+                min-height: 430px;
+            }
+
+            .submission-title {
+                font-size: 49px;
+
+                letter-spacing: -2.5px;
+            }
+
+            .submission-text {
+                font-size: 9px;
+            }
+
+            footer {
+                width: calc(100% - 35px);
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 25px;
+            }
+
+            .socials {
+                gap: 18px;
+
+                flex-wrap: wrap;
+            }
+
         }
 
 
         /* =========================================================
-           MOBILE PEQUEÑO
+           SMALL MOBILE
         ========================================================= */
 
-        @media (max-width: 420px) {
-
+        @media (max-width: 430px) {
 
             nav {
-
-                gap: 9px;
+                gap: 8px;
             }
 
-
             nav a {
-
                 font-size: 5px;
             }
 
-
-            .header-logo img {
-
-                height: 17px;
+            .hero-subtitle {
+                font-size: 9px;
             }
 
+            .hero-description {
+                flex-direction: column;
 
-            header.scrolled .header-logo img {
-
-                height: 14px;
+                gap: 6px;
             }
 
-
-            .logo-container {
-
-                width: 82vw;
+            .artists-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-
-            .soundcloud-player {
-
-                width: 65%;
+            .artist-name {
+                font-size: 11px;
             }
 
-
-            .section-title {
-
-                font-size: 17px;
+            .submission-title {
+                font-size: 42px;
             }
 
-
-            .contact-title {
-
-                font-size: 17px;
-            }
         }
 
     </style>
+
 </head>
 
 
@@ -715,7 +934,7 @@
 
 
     <!-- =========================================================
-         VIDEO DE FONDO
+         BACKGROUND
     ========================================================= -->
 
     <video
@@ -725,82 +944,97 @@
         loop
         playsinline
     >
-        <source src="background.mp4" type="video/mp4">
+        <source
+            src="background.mp4"
+            type="video/mp4"
+        >
     </video>
-
 
     <div class="background-overlay"></div>
 
 
-    <main class="site">
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header id="mainHeader">
+
+        <a
+            href="#home"
+            class="header-logo"
+        >
+
+            <img
+                src="isologo negro.png"
+                alt="CHIEFKID"
+            >
+
+        </a>
+
+
+        <nav>
+
+            <a href="#release">
+                Release
+            </a>
+
+            <a href="#artists">
+                Artists
+            </a>
+
+            <a href="#stems">
+                Stems
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <main>
 
 
         <!-- =====================================================
-             HEADER
-        ===================================================== -->
+             HOME
+        ====================================================== -->
 
-        <header id="mainHeader">
+        <section
+            id="home"
+            class="hero"
+        >
 
-
-            <div class="header-logo">
-
-                <img
-                    src="isologo negro.png"
-                    alt="CHIEFKID"
-                >
-
-            </div>
-
-
-            <nav>
-
-                <a href="#release">
-                    Release
-                </a>
-
-                <a href="#artists">
-                    Artists
-                </a>
-
-                <a href="#stems">
-                    Stems
-                </a>
-
-                <a href="#contact">
-                    Contact
-                </a>
-
-            </nav>
-
-
-        </header>
-
-
-
-        <!-- =====================================================
-             HERO
-        ===================================================== -->
-
-        <section class="hero">
-
-
-            <div class="logo-container">
-
+            <div class="hero-content">
 
                 <img
                     class="main-logo"
                     src="logo blanco.png"
-                    alt="CHIEFKID"
+                    alt="CHIEFKID COLLECTIVE"
                 >
 
-
-                <div class="collective">
+                <div class="hero-subtitle">
                     Collective
                 </div>
 
+                <div class="hero-line"></div>
+
+                <div class="hero-description">
+
+                    <span>
+                        Independent Electronic Music
+                    </span>
+
+                    <span>
+                        Chile / Worldwide
+                    </span>
+
+                </div>
 
             </div>
-
 
         </section>
 
@@ -808,16 +1042,73 @@
 
         <!-- =====================================================
              RELEASE
-        ===================================================== -->
+        ====================================================== -->
 
         <section
             id="release"
-            class="soundcloud-section"
+            class="section"
         >
 
-            <div class="soundcloud-player">
+            <div class="section-header">
 
-                Reproductor SoundCloud
+                <h2 class="section-title">
+                    Latest Release
+                </h2>
+
+                <span class="section-number">
+                    01 / 04
+                </span>
+
+            </div>
+
+
+            <div class="release-layout">
+
+
+                <div class="release-art">
+
+                    <img
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="Electronic music artwork"
+                    >
+
+                </div>
+
+
+                <div class="release-player">
+
+                    <div class="release-label">
+                        CHIEFKID RELEASE
+                    </div>
+
+                    <div class="release-title">
+                        Together
+                    </div>
+
+
+                    <div class="soundcloud-wrapper">
+
+                        <iframe
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/together&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        >
+                        </iframe>
+
+                    </div>
+
+
+                    <a
+                        class="release-link"
+                        href="https://soundcloud.com/chiefkidmusic"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Listen on SoundCloud →
+                    </a>
+
+                </div>
 
             </div>
 
@@ -826,60 +1117,165 @@
 
 
         <!-- =====================================================
-             ARTISTAS
-        ===================================================== -->
+             ARTISTS
+        ====================================================== -->
 
-        <section id="artists">
+        <section
+            id="artists"
+            class="section"
+        >
 
+            <div class="section-header">
 
-            <h2 class="section-title">
-                Artistas
-            </h2>
+                <h2 class="section-title">
+                    Artists
+                </h2>
 
+                <span class="section-number">
+                    02 / 04
+                </span>
 
-            <div class="artists">
-
-
-                <div class="artist">
-                    ARTIST 01
-                </div>
-
-                <div class="artist">
-                    ARTIST 02
-                </div>
-
-                <div class="artist">
-                    ARTIST 03
-                </div>
-
-                <div class="artist">
-                    ARTIST 04
-                </div>
-
-                <div class="artist">
-                    ARTIST 05
-                </div>
+            </div>
 
 
-                <div class="artist">
-                    ARTIST 06
-                </div>
+            <div class="artists-grid">
 
-                <div class="artist">
-                    ARTIST 07
-                </div>
 
-                <div class="artist">
-                    ARTIST 08
-                </div>
+                <article class="artist-card">
 
-                <div class="artist">
-                    ARTIST 09
-                </div>
+                    <img
+                        src="https://f4.bcbits.com/img/a1976458204_10.jpg"
+                        alt="Artist artwork"
+                    >
 
-                <div class="artist">
-                    ARTIST 10
-                </div>
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 01
+                        </div>
+
+                        <div class="artist-type">
+                            Bass Music
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="artist-card">
+
+                    <img
+                        src="https://i.scdn.co/image/ab67616d0000b273a28d4a6944a3698da2079747"
+                        alt="Artist artwork"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 02
+                        </div>
+
+                        <div class="artist-type">
+                            Hybrid Trap
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="artist-card">
+
+                    <img
+                        src="https://f4.bcbits.com/img/a0966844998_16.jpg"
+                        alt="Artist artwork"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 03
+                        </div>
+
+                        <div class="artist-type">
+                            Drum & Bass
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="artist-card">
+
+                    <img
+                        src="https://i.audiomack.com/apocalypse/ed6d737492.webp?height=1000&width=1000"
+                        alt="Artist artwork"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 04
+                        </div>
+
+                        <div class="artist-type">
+                            Bass / Trap
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="artist-card">
+
+                    <img
+                        src="https://static.wixstatic.com/media/b5b9c2_55080c116c7d4d65b50b28f5a3510da7~mv2.jpg/v1/fill/w_1000,h_992,al_c,q_85,usm_0.66_1.00_0.01/b5b9c2_55080c116c7d4d65b50b28f5a3510da7~mv2.jpg"
+                        alt="Artist artwork"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 05
+                        </div>
+
+                        <div class="artist-type">
+                            Neuro / DnB
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="artist-card">
+
+                    <img
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="Artist artwork"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Artist 06
+                        </div>
+
+                        <div class="artist-type">
+                            Electronic
+                        </div>
+
+                    </div>
+
+                </article>
 
 
             </div>
@@ -890,58 +1286,135 @@
 
         <!-- =====================================================
              STEMS / REMIXES
-        ===================================================== -->
+        ====================================================== -->
 
         <section
             id="stems"
-            class="stems"
+            class="section"
         >
 
+            <div class="section-header">
 
-            <h2 class="section-title">
-                Stems Remixes
-            </h2>
+                <h2 class="section-title">
+                    Stems / Remixes
+                </h2>
 
-
-            <div class="remixes">
-
-
-                <div class="remix">
-                    Remix 1
-                </div>
-
-
-                <div class="remix">
-                    Remix 2
-                </div>
-
+                <span class="section-number">
+                    03 / 04
+                </span>
 
             </div>
 
+
+            <div class="remix-grid">
+
+
+                <article class="remix-card">
+
+                    <img
+                        src="https://i.scdn.co/image/ab67616d0000b273a28d4a6944a3698da2079747"
+                        alt="Remix artwork"
+                    >
+
+                    <div class="remix-content">
+
+                        <div class="remix-tag">
+                            STEMS AVAILABLE
+                        </div>
+
+                        <div class="remix-title">
+                            Unknown Feelings
+                        </div>
+
+                        <a
+                            href="#"
+                            class="remix-button"
+                        >
+                            Download Stems
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="remix-card">
+
+                    <img
+                        src="https://f4.bcbits.com/img/a1976458204_10.jpg"
+                        alt="Remix artwork"
+                    >
+
+                    <div class="remix-content">
+
+                        <div class="remix-tag">
+                            REMIX CONTEST
+                        </div>
+
+                        <div class="remix-title">
+                            ChiefKid Remix
+                        </div>
+
+                        <a
+                            href="#"
+                            class="remix-button"
+                        >
+                            Get The Stems
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </section>
 
 
 
         <!-- =====================================================
-             CONTACTO
-        ===================================================== -->
+             SUBMISSION
+        ====================================================== -->
 
         <section
             id="contact"
-            class="contact"
+            class="section"
         >
 
+            <div class="submission">
 
-            <h2 class="contact-title">
-                Contacto Submission
-            </h2>
+                <div class="section-number">
+                    04 / 04
+                </div>
 
+
+                <h2 class="submission-title">
+                    Submit<br>
+                    Your Music.
+                </h2>
+
+
+                <p class="submission-text">
+
+                    CHIEFKID COLLECTIVE is open to electronic music,
+                    bass music, hybrid trap, drum & bass and experimental
+                    sounds. Send us your music, demos and releases.
+
+                </p>
+
+
+                <a
+                    class="submission-email"
+                    href="mailto:contact@chiefkidmusic.com"
+                >
+                    contact@chiefkidmusic.com
+                </a>
+
+            </div>
 
         </section>
-
-
-        <footer></footer>
 
 
     </main>
@@ -949,31 +1422,86 @@
 
 
     <!-- =========================================================
-         JAVASCRIPT
-         HEADER DINÁMICO AL HACER SCROLL
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <div class="footer-left">
+            © 2026 CHIEFKID COLLECTIVE
+        </div>
+
+
+        <div class="socials">
+
+            <a
+                href="https://soundcloud.com/chiefkidmusic"
+                target="_blank"
+                rel="noopener"
+            >
+                SoundCloud
+            </a>
+
+            <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener"
+            >
+                YouTube
+            </a>
+
+            <a
+                href="https://twitter.com/ChiefKidMusic"
+                target="_blank"
+                rel="noopener"
+            >
+                X
+            </a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         HEADER SCROLL
     ========================================================= -->
 
     <script>
 
-        const header = document.getElementById("mainHeader");
+        const header =
+            document.getElementById("mainHeader");
 
-        window.addEventListener("scroll", function () {
 
-            if (window.scrollY > 40) {
+        window.addEventListener(
+            "scroll",
+            () => {
 
-                header.classList.add("scrolled");
+                if (window.scrollY > 50) {
 
-            } else {
+                    header.classList.add("scrolled");
 
-                header.classList.remove("scrolled");
+                } else {
+
+                    header.classList.remove("scrolled");
+
+                }
 
             }
-
-        });
+        );
 
     </script>
 
 
 </body>
+
 </html>
-```
