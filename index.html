@@ -4,45 +4,773 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mi Nueva Página</title>
+    <title>VICE CITY — Coming Soon</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            min-height: 100vh;
-            background: #05070B;
+            background: #08070b;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 50px;
+
+            z-index: 100;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,.65),
+                transparent
+            );
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            opacity: .55;
+        }
+
+        .menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+
+            position: relative;
 
             display: flex;
             align-items: center;
             justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.15),
+                    rgba(0,0,0,.7)
+                ),
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=90")
+                center/cover;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 20%,
+                    rgba(0,0,0,.7) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
             text-align: center;
+
+            animation: heroIn 1.5s ease forwards;
         }
 
-        h1 {
-            font-size: 60px;
+        .small-title {
+            font-size: 13px;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            opacity: .85;
         }
 
-        p {
-            margin-top: 15px;
-            color: #91A0B5;
-            font-size: 18px;
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(90px, 17vw, 250px);
+
+            line-height: .75;
+
+            letter-spacing: 5px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,.6);
         }
+
+        .hero-subtitle {
+            margin-top: 30px;
+
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .scroll {
+            position: absolute;
+
+            bottom: 35px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 3;
+
+            font-size: 10px;
+            letter-spacing: 4px;
+
+            opacity: .7;
+        }
+
+        .scroll::after {
+            content: "";
+
+            display: block;
+
+            width: 1px;
+            height: 45px;
+
+            margin: 12px auto 0;
+
+            background: white;
+
+            opacity: .5;
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            min-height: 65vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    #241b2d,
+                    #08070b 55%
+                );
+        }
+
+        .intro-content {
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+
+            opacity: .55;
+
+            margin-bottom: 25px;
+        }
+
+        .intro h2 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(55px, 8vw, 110px);
+
+            line-height: .9;
+
+            letter-spacing: 2px;
+        }
+
+        .intro p {
+            margin: 35px auto 0;
+
+            max-width: 650px;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+
+            color: #aaa;
+        }
+
+        /* =========================
+           CHARACTERS
+        ========================= */
+
+        .characters {
+            padding: 100px 5%;
+
+            background: #0c0b10;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(60px, 9vw, 120px);
+
+            text-align: center;
+
+            margin-bottom: 70px;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+
+            max-width: 1300px;
+
+            margin: auto;
+        }
+
+        .card {
+            height: 650px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #16151b;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 1s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.07);
+        }
+
+        .card::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.9),
+                    transparent 60%
+                );
+        }
+
+        .card-info {
+            position: absolute;
+
+            bottom: 35px;
+            left: 35px;
+
+            z-index: 2;
+        }
+
+        .card-number {
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            opacity: .6;
+        }
+
+        .card-name {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 65px;
+
+            line-height: .9;
+
+            margin-top: 8px;
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery {
+            padding: 120px 5%;
+
+            background: #08070b;
+        }
+
+        .gallery-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            grid-auto-rows: 300px;
+
+            gap: 15px;
+
+            max-width: 1400px;
+
+            margin: auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-item:first-child {
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform .8s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.35),
+                    rgba(0,0,0,.8)
+                ),
+                url("https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2200&q=90")
+                center/cover;
+        }
+
+        .cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(70px, 12vw, 170px);
+
+            line-height: .8;
+        }
+
+        .cta p {
+            margin: 30px 0;
+
+            letter-spacing: 4px;
+
+            font-size: 12px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 17px 35px;
+
+            border: 1px solid white;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            transition: .3s;
+        }
+
+        .button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 45px 30px;
+
+            text-align: center;
+
+            background: #050509;
+
+            color: #666;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes heroIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 768px) {
+
+            nav {
+                padding: 0 25px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero-title {
+                font-size: 100px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                height: 550px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 220px;
+            }
+
+            .gallery-item:first-child {
+                grid-row: span 1;
+            }
+
+        }
+
     </style>
 </head>
 
 <body>
 
-    <main>
-        <h1>MI NUEVA PÁGINA</h1>
-        <p>Esta página está funcionando 🚀</p>
-    </main>
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            VICE
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#story">Historia</a></li>
+            <li><a href="#characters">Personajes</a></li>
+            <li><a href="#gallery">Galería</a></li>
+        </ul>
+
+        <div class="menu">
+            ☰
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                A NEW ERA
+            </div>
+
+            <h1 class="hero-title">
+                VICE
+            </h1>
+
+            <div class="hero-subtitle">
+                Welcome to the neon coast
+            </div>
+
+        </div>
+
+        <div class="scroll">
+            SCROLL TO EXPLORE
+        </div>
+
+    </section>
+
+
+    <!-- INTRO -->
+
+    <section class="intro" id="story">
+
+        <div class="intro-content">
+
+            <div class="eyebrow">
+                THE CITY NEVER SLEEPS
+            </div>
+
+            <h2>
+                WELCOME TO<br>
+                THE OTHER SIDE
+            </h2>
+
+            <p>
+                A city built on dreams, money, music and
+                endless nights. From neon streets to
+                tropical coastlines, every corner hides
+                another story.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CHARACTERS -->
+
+    <section class="characters" id="characters">
+
+        <h2 class="section-title">
+            CHARACTERS
+        </h2>
+
+        <div class="cards">
+
+            <article class="card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=90"
+                    alt="Character"
+                >
+
+                <div class="card-info">
+
+                    <div class="card-number">
+                        01 — THE DREAMER
+                    </div>
+
+                    <div class="card-name">
+                        LUNA
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=90"
+                    alt="Character"
+                >
+
+                <div class="card-info">
+
+                    <div class="card-number">
+                        02 — THE RUNNER
+                    </div>
+
+                    <div class="card-name">
+                        RIO
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section class="gallery" id="gallery">
+
+        <h2 class="section-title">
+            THE CITY
+        </h2>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=90"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=90"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=90"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=90"
+                    alt=""
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <div>
+
+            <div class="eyebrow">
+                YOUR STORY STARTS HERE
+            </div>
+
+            <h2>
+                ENTER<br>
+                VICE
+            </h2>
+
+            <p>
+                THE NIGHT IS JUST BEGINNING
+            </p>
+
+            <a href="#home" class="button">
+                EXPLORE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 VICE — A FAN-MADE CONCEPT
+
+    </footer>
 
 </body>
 </html>
