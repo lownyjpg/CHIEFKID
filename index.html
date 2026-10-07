@@ -1,11 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CHIEFKID COLLECTIVE</title>
 
     <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -24,29 +31,50 @@
             overflow-x: hidden;
         }
 
+
         /* =========================================================
            BACKGROUND VIDEO
         ========================================================= */
 
         .background-video {
             position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+            inset: -40px;
+
+            width: calc(100% + 80px);
+            height: calc(100% + 80px);
+
             object-fit: cover;
+
+            /*
+               DESENFOQUE DEL FONDO
+               40px = desenfoque fuerte
+            */
+            filter: blur(40px);
+
+            transform: scale(1.08);
+
             z-index: -3;
             pointer-events: none;
         }
 
+
+        /* =========================================================
+           BACKGROUND OVERLAY
+        ========================================================= */
+
         .background-overlay {
             position: fixed;
             inset: 0;
+
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.28);
+
+            background: rgba(0, 0, 0, 0.38);
+
             z-index: -2;
             pointer-events: none;
         }
+
 
         /* =========================================================
            CONTENEDOR PRINCIPAL
@@ -55,31 +83,78 @@
         .site {
             width: 100%;
             min-height: 100vh;
+
             margin: 0;
             padding: 0;
+
             background: transparent;
             border: none;
         }
+
 
         /* =========================================================
            HEADER
         ========================================================= */
 
         header {
-            position: relative;
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
             width: 100%;
-            height: 42px;
-            background: #fff;
-            border: none;
+            height: 52px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 14px;
-            z-index: 10;
+
+            padding: 0 18px;
+
+            z-index: 100;
+
+            transition:
+                height 0.35s ease,
+                background 0.35s ease,
+                backdrop-filter 0.35s ease,
+                padding 0.35s ease,
+                border-color 0.35s ease;
         }
+
+
+        /* =========================================================
+           HEADER CUANDO SE HACE SCROLL
+        ========================================================= */
+
+        header.scrolled {
+
+            height: 34px;
+
+            background: rgba(255, 255, 255, 0.88);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+            padding: 0 14px;
+        }
+
+
+        /* =========================================================
+           LOGO DEL HEADER
+        ========================================================= */
 
         .header-logo {
             height: 100%;
+
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -87,30 +162,64 @@
 
         .header-logo img {
             display: block;
+
             width: auto;
-            height: 21px;
+            height: 22px;
+
             object-fit: contain;
+
+            transition:
+                height 0.35s ease,
+                filter 0.35s ease;
         }
+
+
+        /* Logo más pequeño al hacer scroll */
+
+        header.scrolled .header-logo img {
+            height: 16px;
+        }
+
+
+        /* =========================================================
+           NAV
+        ========================================================= */
 
         nav {
             display: flex;
             align-items: center;
+
             gap: 28px;
         }
 
         nav a {
-            color: #000;
+            color: #fff;
+
             text-decoration: none;
-            font-size: 7px;
+
+            font-size: 8px;
             font-weight: 900;
+
             text-transform: uppercase;
+
             line-height: 1;
-            transition: opacity 0.2s ease;
+
+            transition:
+                color 0.35s ease,
+                opacity 0.2s ease;
         }
 
         nav a:hover {
             opacity: 0.45;
         }
+
+
+        /* NAV NEGRO CUANDO BAJA */
+
+        header.scrolled nav a {
+            color: #000;
+        }
+
 
         /* =========================================================
            HERO
@@ -118,274 +227,565 @@
 
         .hero {
             width: 100%;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 72px;
-            padding-bottom: 48px;
+
+            padding-top: 145px;
+            padding-bottom: 70px;
         }
 
+
+        /* =========================================================
+           LOGO PRINCIPAL
+        ========================================================= */
+
         .logo-container {
+
             width: min(75vw, 700px);
+
             display: flex;
             flex-direction: column;
             align-items: stretch;
         }
 
         .main-logo {
+
             display: block;
+
             width: 100%;
             height: auto;
+
             object-fit: contain;
         }
 
+
+        /* =========================================================
+           COLLECTIVE
+        ========================================================= */
+
         .collective {
+
             width: 100%;
+
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            margin-top: 7px;
+
+            margin-top: 8px;
+
             color: #fff;
-            font-size: 12px;
+
+            font-size: 15px;
             font-weight: 900;
+
             line-height: 1;
+
             text-transform: uppercase;
         }
+
 
         /* =========================================================
            SOUNDCLOUD
         ========================================================= */
 
         .soundcloud-section {
+
             display: flex;
             justify-content: center;
-            margin-top: 5px;
-            margin-bottom: 32px;
+
+            margin-top: 10px;
+            margin-bottom: 60px;
         }
 
         .soundcloud-player {
-            width: 290px;
-            height: 92px;
+
+            width: 420px;
+            height: 110px;
+
             background: #eeeeee;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #000;
-            font-size: 11px;
+
+            font-size: 13px;
             font-weight: 900;
+
             text-transform: uppercase;
         }
 
+
         /* =========================================================
-           TITULOS
+           TITULOS DE SECCIONES
         ========================================================= */
 
         .section-title {
+
             text-align: center;
+
             color: #fff;
-            font-size: 11px;
+
+            /*
+               MÁS GRANDE
+               Estos NO son los textos del menú superior.
+            */
+
+            font-size: 22px;
+
             font-weight: 900;
+
             text-transform: uppercase;
-            margin-bottom: 15px;
+
+            margin-bottom: 25px;
+
+            letter-spacing: 0.5px;
         }
+
 
         /* =========================================================
            ARTISTAS
         ========================================================= */
 
         .artists {
+
             width: calc(100% - 65px);
+
             max-width: 920px;
-            margin: 0 auto 21px;
+
+            margin: 0 auto 70px;
+
             display: grid;
+
             grid-template-columns: repeat(5, 1fr);
-            gap: 14px 16px;
+
+            gap: 18px 18px;
         }
 
+
         .artist {
+
             aspect-ratio: 1 / 1;
+
             background: #000;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #fff;
-            font-size: 10px;
+
+            font-size: 14px;
+
             font-weight: 900;
+
             cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
         }
 
         .artist:hover {
+
             transform: scale(1.025);
+
             opacity: 0.85;
         }
+
 
         /* =========================================================
            STEMS / REMIXES
         ========================================================= */
 
         .stems {
+
             width: calc(100% - 65px);
+
             max-width: 920px;
+
             margin: 0 auto;
         }
 
+
         .remixes {
+
             display: grid;
+
             grid-template-columns: 1fr 1fr;
+
             gap: 110px;
-            margin-top: 5px;
+
+            margin-top: 10px;
         }
 
+
         .remix {
-            height: 34px;
+
+            height: 46px;
+
             background: #000;
+
             color: #fff;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+
+            font-size: 14px;
+
             font-weight: 900;
+
             text-transform: uppercase;
+
             cursor: pointer;
+
             transition: opacity 0.2s ease;
         }
 
         .remix:hover {
+
             opacity: 0.75;
         }
+
 
         /* =========================================================
            CONTACTO
         ========================================================= */
 
         .contact {
+
             width: calc(100% - 72px);
+
             max-width: 920px;
-            margin: 42px auto 0;
+
+            margin: 75px auto 0;
         }
 
+
         .contact-title {
+
             color: #fff;
-            font-size: 11px;
+
+            font-size: 22px;
+
             font-weight: 900;
+
             text-transform: uppercase;
         }
 
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
         footer {
-            height: 120px;
+
+            height: 160px;
         }
+
 
         /* =========================================================
            RESPONSIVE
         ========================================================= */
 
         @media (max-width: 700px) {
+
+
+            /* HEADER */
+
             header {
-                height: 42px;
+
+                height: 48px;
+
                 padding: 0 10px;
             }
 
+
+            header.scrolled {
+
+                height: 32px;
+
+                padding: 0 10px;
+            }
+
+
             .header-logo img {
+
                 height: 19px;
             }
 
+
+            header.scrolled .header-logo img {
+
+                height: 15px;
+            }
+
+
             nav {
+
                 gap: 13px;
             }
 
+
+            /*
+               EL MENÚ SIGUE PEQUEÑO
+            */
+
             nav a {
+
                 font-size: 6px;
             }
 
+
+            /* HERO */
+
             .hero {
-                padding-top: 55px;
-                padding-bottom: 40px;
+
+                padding-top: 110px;
+
+                padding-bottom: 50px;
             }
 
+
             .logo-container {
+
                 width: 78vw;
             }
 
+
             .collective {
-                font-size: 10px;
+
+                font-size: 11px;
+
                 margin-top: 6px;
             }
 
-            .artists {
-                width: calc(100% - 35px);
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+
+            /* SOUNDCLOUD */
+
+            .soundcloud-section {
+
+                margin-bottom: 45px;
             }
+
+
+            .soundcloud-player {
+
+                width: 75%;
+
+                height: 92px;
+
+                font-size: 10px;
+            }
+
+
+            /* TITULOS */
+
+            .section-title {
+
+                font-size: 18px;
+
+                margin-bottom: 18px;
+            }
+
+
+            /* ARTISTAS */
+
+            .artists {
+
+                width: calc(100% - 35px);
+
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 12px;
+
+                margin-bottom: 55px;
+            }
+
+
+            .artist {
+
+                font-size: 11px;
+            }
+
+
+            /* STEMS */
 
             .stems {
+
                 width: calc(100% - 35px);
             }
 
+
             .remixes {
+
                 gap: 15px;
             }
 
+
+            .remix {
+
+                height: 40px;
+
+                font-size: 11px;
+            }
+
+
+            /* CONTACT */
+
             .contact {
+
                 width: calc(100% - 40px);
+
+                margin-top: 55px;
+            }
+
+
+            .contact-title {
+
+                font-size: 18px;
             }
         }
 
+
+        /* =========================================================
+           MOBILE PEQUEÑO
+        ========================================================= */
+
         @media (max-width: 420px) {
+
+
             nav {
+
                 gap: 9px;
             }
 
+
             nav a {
+
                 font-size: 5px;
             }
 
+
             .header-logo img {
+
                 height: 17px;
             }
 
+
+            header.scrolled .header-logo img {
+
+                height: 14px;
+            }
+
+
             .logo-container {
+
                 width: 82vw;
             }
 
+
             .soundcloud-player {
+
                 width: 65%;
             }
+
+
+            .section-title {
+
+                font-size: 17px;
+            }
+
+
+            .contact-title {
+
+                font-size: 17px;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- VIDEO DE FONDO -->
-    <video class="background-video" autoplay muted loop playsinline>
+
+    <!-- =========================================================
+         VIDEO DE FONDO
+    ========================================================= -->
+
+    <video
+        class="background-video"
+        autoplay
+        muted
+        loop
+        playsinline
+    >
         <source src="background.mp4" type="video/mp4">
     </video>
 
+
     <div class="background-overlay"></div>
+
 
     <main class="site">
 
-        <!-- HEADER -->
-        <header>
+
+        <!-- =====================================================
+             HEADER
+        ===================================================== -->
+
+        <header id="mainHeader">
+
 
             <div class="header-logo">
-                <img src="isologo negro.png" alt="CHIEFKID">
+
+                <img
+                    src="isologo negro.png"
+                    alt="CHIEFKID"
+                >
+
             </div>
 
+
             <nav>
-                <a href="#release">Release</a>
-                <a href="#artists">Artists</a>
-                <a href="#stems">Stems</a>
-                <a href="#contact">Contact</a>
+
+                <a href="#release">
+                    Release
+                </a>
+
+                <a href="#artists">
+                    Artists
+                </a>
+
+                <a href="#stems">
+                    Stems
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
             </nav>
+
 
         </header>
 
-        <!-- HERO -->
+
+
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
+
         <section class="hero">
 
+
             <div class="logo-container">
+
 
                 <img
                     class="main-logo"
@@ -393,81 +793,187 @@
                     alt="CHIEFKID"
                 >
 
+
                 <div class="collective">
                     Collective
                 </div>
 
+
             </div>
+
 
         </section>
 
-        <!-- SOUNDCLOUD -->
-        <section id="release" class="soundcloud-section">
+
+
+        <!-- =====================================================
+             RELEASE
+        ===================================================== -->
+
+        <section
+            id="release"
+            class="soundcloud-section"
+        >
 
             <div class="soundcloud-player">
+
                 Reproductor SoundCloud
+
             </div>
 
         </section>
 
-        <!-- ARTISTAS -->
+
+
+        <!-- =====================================================
+             ARTISTAS
+        ===================================================== -->
+
         <section id="artists">
+
 
             <h2 class="section-title">
                 Artistas
             </h2>
 
+
             <div class="artists">
 
-                <div class="artist">ARTIST 01</div>
-                <div class="artist">ARTIST 02</div>
-                <div class="artist">ARTIST 03</div>
-                <div class="artist">ARTIST 04</div>
-                <div class="artist">ARTIST 05</div>
 
-                <div class="artist">ARTIST 06</div>
-                <div class="artist">ARTIST 07</div>
-                <div class="artist">ARTIST 08</div>
-                <div class="artist">ARTIST 09</div>
-                <div class="artist">ARTIST 10</div>
+                <div class="artist">
+                    ARTIST 01
+                </div>
+
+                <div class="artist">
+                    ARTIST 02
+                </div>
+
+                <div class="artist">
+                    ARTIST 03
+                </div>
+
+                <div class="artist">
+                    ARTIST 04
+                </div>
+
+                <div class="artist">
+                    ARTIST 05
+                </div>
+
+
+                <div class="artist">
+                    ARTIST 06
+                </div>
+
+                <div class="artist">
+                    ARTIST 07
+                </div>
+
+                <div class="artist">
+                    ARTIST 08
+                </div>
+
+                <div class="artist">
+                    ARTIST 09
+                </div>
+
+                <div class="artist">
+                    ARTIST 10
+                </div>
+
 
             </div>
 
         </section>
 
-        <!-- STEMS / REMIXES -->
-        <section id="stems" class="stems">
+
+
+        <!-- =====================================================
+             STEMS / REMIXES
+        ===================================================== -->
+
+        <section
+            id="stems"
+            class="stems"
+        >
+
 
             <h2 class="section-title">
                 Stems Remixes
             </h2>
 
+
             <div class="remixes">
+
 
                 <div class="remix">
                     Remix 1
                 </div>
 
+
                 <div class="remix">
                     Remix 2
                 </div>
 
+
             </div>
+
 
         </section>
 
-        <!-- CONTACTO -->
-        <section id="contact" class="contact">
+
+
+        <!-- =====================================================
+             CONTACTO
+        ===================================================== -->
+
+        <section
+            id="contact"
+            class="contact"
+        >
+
 
             <h2 class="contact-title">
                 Contacto Submission
             </h2>
 
+
         </section>
+
 
         <footer></footer>
 
+
     </main>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         HEADER DINÁMICO AL HACER SCROLL
+    ========================================================= -->
+
+    <script>
+
+        const header = document.getElementById("mainHeader");
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 40) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        });
+
+    </script>
+
 
 </body>
 </html>
+```
