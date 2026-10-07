@@ -314,89 +314,104 @@
 
 
         /* =========================================================
-           RELEASE
+           RELEASES
         ========================================================= */
 
-        .release-layout {
+        .releases-grid {
             display: grid;
 
             grid-template-columns:
-                0.75fr 1.25fr;
+                repeat(2, 1fr);
 
-            gap: 35px;
-
-            align-items: stretch;
+            gap: 18px;
         }
 
-        .release-art {
-            min-height: 390px;
+        .release-card {
+            background:
+                rgba(0,0,0,0.70);
+
+            border:
+                1px solid rgba(255,255,255,0.12);
 
             overflow: hidden;
 
-            background: #111;
-        }
-
-        .release-art img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-
             transition:
-                transform 0.6s ease;
+                transform 0.35s ease,
+                border-color 0.35s ease;
         }
 
-        .release-art:hover img {
-            transform: scale(1.04);
+        .release-card:hover {
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(255,255,255,0.30);
         }
 
-        .release-player {
-            min-height: 390px;
-
-            background:
-                rgba(0,0,0,0.68);
-
-            border:
-                1px solid rgba(255,255,255,0.14);
+        .release-card-header {
+            padding:
+                20px 22px 15px;
 
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
 
-            justify-content: center;
-
-            padding: 30px;
+            gap: 20px;
         }
 
         .release-label {
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 900;
 
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
 
-            opacity: 0.55;
+            opacity: 0.50;
 
-            margin-bottom: 12px;
+            margin-bottom: 7px;
         }
 
         .release-title {
-            font-size: clamp(26px, 4vw, 44px);
-
+            font-size: 22px;
             font-weight: 900;
 
             text-transform: uppercase;
 
-            margin-bottom: 25px;
+            line-height: 1;
+        }
+
+        .release-artist {
+            margin-top: 6px;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.8px;
+
+            opacity: 0.55;
+        }
+
+        .release-number {
+            font-size: 8px;
+            font-weight: 900;
+
+            opacity: 0.35;
+
+            white-space: nowrap;
         }
 
         .soundcloud-wrapper {
             width: 100%;
+
+            padding:
+                0 15px 15px;
         }
 
         .soundcloud-wrapper iframe {
+            display: block;
+
             width: 100%;
 
             height: 166px;
@@ -404,16 +419,42 @@
             border: 0;
         }
 
-        .release-link {
-            margin-top: 20px;
+        .release-footer {
+            padding:
+                0 22px 20px;
 
-            font-size: 9px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .release-genre {
+            font-size: 8px;
             font-weight: 900;
 
             text-transform: uppercase;
+
             letter-spacing: 1px;
 
-            opacity: 0.65;
+            opacity: 0.45;
+        }
+
+        .release-link {
+            font-size: 8px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            opacity: 0.7;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+        .release-link:hover {
+            opacity: 0.35;
         }
 
 
@@ -452,7 +493,7 @@
 
             filter:
                 grayscale(15%)
-                brightness(0.75);
+                brightness(0.65);
 
             transition:
                 transform 0.55s ease,
@@ -474,12 +515,12 @@
             right: 0;
             bottom: 0;
 
-            padding: 25px 20px 18px;
+            padding: 45px 20px 18px;
 
             background:
                 linear-gradient(
                     transparent,
-                    rgba(0,0,0,0.85)
+                    rgba(0,0,0,0.90)
                 );
         }
 
@@ -805,20 +846,29 @@
                 font-size: 25px;
             }
 
-            .release-layout {
+            .releases-grid {
                 grid-template-columns: 1fr;
 
-                gap: 15px;
+                gap: 14px;
             }
 
-            .release-art {
-                min-height: 300px;
+            .release-title {
+                font-size: 19px;
             }
 
-            .release-player {
-                min-height: auto;
+            .release-card-header {
+                padding:
+                    17px 18px 13px;
+            }
 
-                padding: 22px;
+            .release-footer {
+                padding:
+                    0 18px 17px;
+            }
+
+            .soundcloud-wrapper {
+                padding:
+                    0 10px 10px;
             }
 
             .soundcloud-wrapper iframe {
@@ -944,10 +994,12 @@
         loop
         playsinline
     >
+
         <source
             src="background.mp4"
             type="video/mp4"
         >
+
     </video>
 
     <div class="background-overlay"></div>
@@ -975,7 +1027,7 @@
         <nav>
 
             <a href="#release">
-                Release
+                Releases
             </a>
 
             <a href="#artists">
@@ -993,7 +1045,6 @@
         </nav>
 
     </header>
-
 
 
     <main>
@@ -1039,9 +1090,8 @@
         </section>
 
 
-
         <!-- =====================================================
-             RELEASE
+             RELEASES
         ====================================================== -->
 
         <section
@@ -1052,7 +1102,7 @@
             <div class="section-header">
 
                 <h2 class="section-title">
-                    Latest Release
+                    Releases
                 </h2>
 
                 <span class="section-number">
@@ -1062,27 +1112,37 @@
             </div>
 
 
-            <div class="release-layout">
+            <div class="releases-grid">
 
 
-                <div class="release-art">
+                <!-- =================================================
+                     RELEASE 01
+                ================================================== -->
 
-                    <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="Electronic music artwork"
-                    >
+                <article class="release-card">
 
-                </div>
+                    <div class="release-card-header">
 
+                        <div>
 
-                <div class="release-player">
+                            <div class="release-label">
+                                CHIEFKID RELEASE
+                            </div>
 
-                    <div class="release-label">
-                        CHIEFKID RELEASE
-                    </div>
+                            <div class="release-title">
+                                Together
+                            </div>
 
-                    <div class="release-title">
-                        Together
+                            <div class="release-artist">
+                                Lonely Fun
+                            </div>
+
+                        </div>
+
+                        <div class="release-number">
+                            001
+                        </div>
+
                     </div>
 
 
@@ -1099,21 +1159,222 @@
                     </div>
 
 
-                    <a
-                        class="release-link"
-                        href="https://soundcloud.com/chiefkidmusic"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Listen on SoundCloud →
-                    </a>
+                    <div class="release-footer">
 
-                </div>
+                        <span class="release-genre">
+                            Hybrid Trap
+                        </span>
+
+                        <a
+                            class="release-link"
+                            href="https://soundcloud.com/chiefkidmusic/together"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            SoundCloud →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     RELEASE 02
+                ================================================== -->
+
+                <article class="release-card">
+
+                    <div class="release-card-header">
+
+                        <div>
+
+                            <div class="release-label">
+                                CHIEFKID RELEASE
+                            </div>
+
+                            <div class="release-title">
+                                Unknown Feelings [VIP]
+                            </div>
+
+                            <div class="release-artist">
+                                Cellarium
+                            </div>
+
+                        </div>
+
+                        <div class="release-number">
+                            002
+                        </div>
+
+                    </div>
+
+
+                    <div class="soundcloud-wrapper">
+
+                        <iframe
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/c_ufvip&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        >
+                        </iframe>
+
+                    </div>
+
+
+                    <div class="release-footer">
+
+                        <span class="release-genre">
+                            Drum & Bass
+                        </span>
+
+                        <a
+                            class="release-link"
+                            href="https://soundcloud.com/chiefkidmusic/c_ufvip"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            SoundCloud →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     RELEASE 03
+                     READY FOR ANOTHER CHIEFKID TRACK
+                ================================================== -->
+
+                <article class="release-card">
+
+                    <div class="release-card-header">
+
+                        <div>
+
+                            <div class="release-label">
+                                CHIEFKID ARCHIVE
+                            </div>
+
+                            <div class="release-title">
+                                ChiefKid Files
+                            </div>
+
+                            <div class="release-artist">
+                                Collective
+                            </div>
+
+                        </div>
+
+                        <div class="release-number">
+                            003
+                        </div>
+
+                    </div>
+
+
+                    <div class="soundcloud-wrapper">
+
+                        <iframe
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        >
+                        </iframe>
+
+                    </div>
+
+
+                    <div class="release-footer">
+
+                        <span class="release-genre">
+                            Collective Archive
+                        </span>
+
+                        <a
+                            class="release-link"
+                            href="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open Playlist →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     RELEASE 04
+                ================================================== -->
+
+                <article class="release-card">
+
+                    <div class="release-card-header">
+
+                        <div>
+
+                            <div class="release-label">
+                                CHIEFKID
+                            </div>
+
+                            <div class="release-title">
+                                Explore More
+                            </div>
+
+                            <div class="release-artist">
+                                ChiefKid Collective
+                            </div>
+
+                        </div>
+
+                        <div class="release-number">
+                            004
+                        </div>
+
+                    </div>
+
+
+                    <div class="soundcloud-wrapper">
+
+                        <iframe
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        >
+                        </iframe>
+
+                    </div>
+
+
+                    <div class="release-footer">
+
+                        <span class="release-genre">
+                            Electronic Music
+                        </span>
+
+                        <a
+                            class="release-link"
+                            href="https://soundcloud.com/chiefkidmusic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View Profile →
+                        </a>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
         </section>
-
 
 
         <!-- =====================================================
@@ -1141,17 +1402,53 @@
             <div class="artists-grid">
 
 
-                <article class="artist-card">
+                <!-- LONELY FUN -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/lonelyfunmusic"
+                    target="_blank"
+                    rel="noopener"
+                >
 
                     <img
-                        src="https://f4.bcbits.com/img/a1976458204_10.jpg"
-                        alt="Artist artwork"
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="Lonely Fun"
                     >
 
                     <div class="artist-info">
 
                         <div class="artist-name">
-                            Artist 01
+                            Lonely Fun
+                        </div>
+
+                        <div class="artist-type">
+                            Hybrid Trap / Bass
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- MARINHO -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/marinhomsic"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <img
+                        src="https://i1.sndcdn.com/artworks-000616698883-0s2j7h-t500x500.jpg"
+                        alt="Marinho"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            Marinho
                         </div>
 
                         <div class="artist-type">
@@ -1160,44 +1457,27 @@
 
                     </div>
 
-                </article>
+                </a>
 
 
+                <!-- CELLARIUM -->
 
-                <article class="artist-card">
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/chiefkidmusic/c_ufvip"
+                    target="_blank"
+                    rel="noopener"
+                >
 
                     <img
-                        src="https://i.scdn.co/image/ab67616d0000b273a28d4a6944a3698da2079747"
-                        alt="Artist artwork"
+                        src="https://i1.sndcdn.com/artworks-000000000000-0-t500x500.jpg"
+                        alt="Cellarium"
                     >
 
                     <div class="artist-info">
 
                         <div class="artist-name">
-                            Artist 02
-                        </div>
-
-                        <div class="artist-type">
-                            Hybrid Trap
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <article class="artist-card">
-
-                    <img
-                        src="https://f4.bcbits.com/img/a0966844998_16.jpg"
-                        alt="Artist artwork"
-                    >
-
-                    <div class="artist-info">
-
-                        <div class="artist-name">
-                            Artist 03
+                            Cellarium
                         </div>
 
                         <div class="artist-type">
@@ -1206,82 +1486,99 @@
 
                     </div>
 
-                </article>
+                </a>
 
 
+                <!-- CHIEFKID -->
 
-                <article class="artist-card">
-
-                    <img
-                        src="https://i.audiomack.com/apocalypse/ed6d737492.webp?height=1000&width=1000"
-                        alt="Artist artwork"
-                    >
-
-                    <div class="artist-info">
-
-                        <div class="artist-name">
-                            Artist 04
-                        </div>
-
-                        <div class="artist-type">
-                            Bass / Trap
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <article class="artist-card">
-
-                    <img
-                        src="https://static.wixstatic.com/media/b5b9c2_55080c116c7d4d65b50b28f5a3510da7~mv2.jpg/v1/fill/w_1000,h_992,al_c,q_85,usm_0.66_1.00_0.01/b5b9c2_55080c116c7d4d65b50b28f5a3510da7~mv2.jpg"
-                        alt="Artist artwork"
-                    >
-
-                    <div class="artist-info">
-
-                        <div class="artist-name">
-                            Artist 05
-                        </div>
-
-                        <div class="artist-type">
-                            Neuro / DnB
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <article class="artist-card">
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/chiefkidmusic"
+                    target="_blank"
+                    rel="noopener"
+                >
 
                     <img
                         src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="Artist artwork"
+                        alt="ChiefKid Collective"
                     >
 
                     <div class="artist-info">
 
                         <div class="artist-name">
-                            Artist 06
+                            ChiefKid
                         </div>
 
                         <div class="artist-type">
-                            Electronic
+                            Collective
                         </div>
 
                     </div>
 
-                </article>
+                </a>
+
+
+                <!-- COLLECTIVE -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/chiefkidmusic"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <img
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="ChiefKid Releases"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            ChiefKid Files
+                        </div>
+
+                        <div class="artist-type">
+                            Releases / Archive
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- SOUND CLOUD -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/chiefkidmusic"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <img
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="ChiefKid Music"
+                    >
+
+                    <div class="artist-info">
+
+                        <div class="artist-name">
+                            More Artists
+                        </div>
+
+                        <div class="artist-type">
+                            Explore ChiefKid
+                        </div>
+
+                    </div>
+
+                </a>
 
 
             </div>
 
         </section>
-
 
 
         <!-- =====================================================
@@ -1312,25 +1609,27 @@
                 <article class="remix-card">
 
                     <img
-                        src="https://i.scdn.co/image/ab67616d0000b273a28d4a6944a3698da2079747"
-                        alt="Remix artwork"
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="ChiefKid music"
                     >
 
                     <div class="remix-content">
 
                         <div class="remix-tag">
-                            STEMS AVAILABLE
+                            CHIEFKID
                         </div>
 
                         <div class="remix-title">
-                            Unknown Feelings
+                            Remix The Music
                         </div>
 
                         <a
-                            href="#"
+                            href="https://soundcloud.com/chiefkidmusic"
                             class="remix-button"
+                            target="_blank"
+                            rel="noopener"
                         >
-                            Download Stems
+                            Explore Releases
                         </a>
 
                     </div>
@@ -1338,29 +1637,30 @@
                 </article>
 
 
-
                 <article class="remix-card">
 
                     <img
-                        src="https://f4.bcbits.com/img/a1976458204_10.jpg"
-                        alt="Remix artwork"
+                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        alt="ChiefKid Collective"
                     >
 
                     <div class="remix-content">
 
                         <div class="remix-tag">
-                            REMIX CONTEST
+                            COLLECTIVE
                         </div>
 
                         <div class="remix-title">
-                            ChiefKid Remix
+                            ChiefKid Files
                         </div>
 
                         <a
-                            href="#"
+                            href="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
                             class="remix-button"
+                            target="_blank"
+                            rel="noopener"
                         >
-                            Get The Stems
+                            Open Archive
                         </a>
 
                     </div>
@@ -1371,7 +1671,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =====================================================
@@ -1418,7 +1717,6 @@
 
 
     </main>
-
 
 
     <!-- =========================================================
@@ -1469,7 +1767,6 @@
         </div>
 
     </footer>
-
 
 
     <!-- =========================================================
