@@ -391,7 +391,7 @@
                 minmax(260px, 30%)
                 minmax(0, 70%);
 
-            align-items: stretch;
+            align-items: start;
 
             width: 100%;
 
@@ -419,16 +419,16 @@
 
             aspect-ratio: 1 / 1;
 
+            height: auto;
+
             min-height: 0;
+
+            align-self: start;
 
             overflow: hidden;
 
             background:
-                linear-gradient(
-                    135deg,
-                    #171717,
-                    #050505
-                );
+                #0a0a0a;
         }
 
         .playlist-artwork img {
@@ -439,15 +439,20 @@
             width: 100%;
             height: 100%;
 
-            object-fit: cover;
+            /*
+             * CONTAIN = muestra toda la portada
+             * sin recortarla.
+             */
+            object-fit: contain;
+
+            object-position: center;
 
             opacity: 0;
 
-            transform: scale(1.01);
+            transform: none;
 
             transition:
-                opacity 0.5s ease,
-                transform 0.7s ease;
+                opacity 0.5s ease;
         }
 
         .playlist-artwork.loaded img {
@@ -456,7 +461,7 @@
 
         .playlist-feature:hover
         .playlist-artwork img {
-            transform: scale(1.045);
+            transform: none;
         }
 
         .playlist-artwork-fallback {
@@ -508,8 +513,10 @@
 
             justify-content: center;
 
+            min-width: 0;
+
             padding:
-                clamp(24px, 3vw, 42px);
+                clamp(22px, 2.5vw, 34px);
         }
 
         .player-label {
@@ -556,17 +563,22 @@
 
         .playlist-player .spotify-player {
             height: 110px;
+
             margin-top: 8px;
         }
 
 
         /* =========================================================
            INDIVIDUAL RELEASES
-           
-           IMPORTANTE:
-           Arte = cuadrado.
-           Reproductores = mucho más anchos.
-           Recuadro = horizontal y compacto.
+
+           ARTE:
+           - SIEMPRE CUADRADO
+           - SIN RECORTE
+           - SIN ZOOM
+
+           PLAYERS:
+           - AL LADO DEL ARTE
+           - BLOQUE HORIZONTAL
         ========================================================= */
 
         .release-list {
@@ -581,12 +593,12 @@
             display: grid;
 
             /*
-             * El arte ocupa menos ancho pero mantiene 1:1.
-             * El reproductor recibe la mayor parte del espacio.
+             * 30% = artwork
+             * 70% = reproductores
              */
             grid-template-columns:
-                minmax(280px, 28%)
-                minmax(0, 72%);
+                minmax(300px, 30%)
+                minmax(0, 70%);
 
             align-items: start;
 
@@ -606,8 +618,8 @@
 
         .release-row.reverse {
             grid-template-columns:
-                minmax(0, 72%)
-                minmax(280px, 28%);
+                minmax(0, 70%)
+                minmax(300px, 30%);
         }
 
         .release-row.reverse
@@ -620,14 +632,20 @@
             order: 1;
         }
 
-        /*
-         * ARTE PERFECTAMENTE CUADRADO
-         */
+
+        /* =========================================================
+           RELEASE ARTWORK
+        ========================================================= */
+
         .release-artwork {
             position: relative;
 
             width: 100%;
 
+            /*
+             * OBLIGATORIO:
+             * el contenedor siempre es cuadrado.
+             */
             aspect-ratio: 1 / 1;
 
             height: auto;
@@ -639,11 +657,7 @@
             overflow: hidden;
 
             background:
-                linear-gradient(
-                    135deg,
-                    #171717,
-                    #050505
-                );
+                #0a0a0a;
         }
 
         .release-artwork img {
@@ -654,24 +668,36 @@
             width: 100%;
             height: 100%;
 
-            object-fit: cover;
+            /*
+             * IMPORTANTE:
+             * contain evita completamente
+             * el corte de la portada.
+             */
+            object-fit: contain;
+
+            object-position: center;
 
             opacity: 0;
 
-            transform: scale(1.01);
+            /*
+             * Sin zoom.
+             */
+            transform: none;
 
             transition:
-                opacity 0.5s ease,
-                transform 0.7s ease;
+                opacity 0.5s ease;
         }
 
         .release-artwork.loaded img {
             opacity: 1;
         }
 
+        /*
+         * Sin zoom al pasar el mouse.
+         */
         .release-row:hover
         .release-artwork img {
-            transform: scale(1.045);
+            transform: none;
         }
 
         .release-artwork-fallback {
@@ -718,12 +744,11 @@
             opacity: 0;
         }
 
-        /*
-         * ÁREA DE REPRODUCTORES
-         *
-         * Reducida verticalmente para que todo el release
-         * se vea más horizontal.
-         */
+
+        /* =========================================================
+           RELEASE INFO
+        ========================================================= */
+
         .release-info {
             display: flex;
 
@@ -734,11 +759,11 @@
             min-width: 0;
 
             padding:
-                clamp(22px, 3vw, 38px);
+                clamp(20px, 2.4vw, 34px);
         }
 
         .release-number {
-            margin-bottom: 9px;
+            margin-bottom: 8px;
 
             font-size: 8px;
 
@@ -754,7 +779,7 @@
             margin-bottom: 6px;
 
             font-size:
-                clamp(26px, 3vw, 48px);
+                clamp(24px, 2.8vw, 44px);
 
             line-height: 0.92;
 
@@ -766,7 +791,7 @@
         }
 
         .release-info p {
-            margin-bottom: 13px;
+            margin-bottom: 11px;
 
             font-size: 8px;
 
@@ -805,16 +830,10 @@
             border: none;
         }
 
-        /*
-         * SoundCloud más bajo.
-         */
         .soundcloud-player {
-            height: 112px;
+            height: 110px;
         }
 
-        /*
-         * Spotify más bajo.
-         */
         .spotify-track {
             height: 60px;
         }
@@ -1302,14 +1321,14 @@
 
             .release-row {
                 grid-template-columns:
-                    minmax(240px, 28%)
-                    minmax(0, 72%);
+                    minmax(240px, 30%)
+                    minmax(0, 70%);
             }
 
             .release-row.reverse {
                 grid-template-columns:
-                    minmax(0, 72%)
-                    minmax(240px, 28%);
+                    minmax(0, 70%)
+                    minmax(240px, 30%);
             }
 
         }
@@ -1420,7 +1439,7 @@
             }
 
             .soundcloud-player {
-                height: 112px;
+                height: 110px;
             }
 
             .spotify-track {
@@ -1512,7 +1531,7 @@
             }
 
             .soundcloud-player {
-                height: 112px;
+                height: 110px;
             }
 
             .spotify-track {
@@ -2270,766 +2289,233 @@
                 class="artists-grid"
             >
 
-
                 <!-- 01 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/lonelyfunmusic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/lonelyfunmusic"
-                >
-
-                    <div class="artist-fallback">
-                        LF
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/lonelyfunmusic" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/lonelyfunmusic">
+                    <div class="artist-fallback">LF</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Lonely Fun"
-                    >
-
+                    <img class="artist-image" alt="Lonely Fun">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            01
-                        </span>
-
-                        <span class="artist-name">
-                            Lonely Fun
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">01</span>
+                        <span class="artist-name">Lonely Fun</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 02 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/sotw808"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/sotw808"
-                >
-
-                    <div class="artist-fallback">
-                        S8
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/sotw808" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/sotw808">
+                    <div class="artist-fallback">S8</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Sotw808"
-                    >
-
+                    <img class="artist-image" alt="Sotw808">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            02
-                        </span>
-
-                        <span class="artist-name">
-                            Sotw808
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">02</span>
+                        <span class="artist-name">Sotw808</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 03 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/cellariumusic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/cellariumusic"
-                >
-
-                    <div class="artist-fallback">
-                        C
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/cellariumusic" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/cellariumusic">
+                    <div class="artist-fallback">C</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Cellarium"
-                    >
-
+                    <img class="artist-image" alt="Cellarium">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            03
-                        </span>
-
-                        <span class="artist-name">
-                            Cellarium
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">03</span>
+                        <span class="artist-name">Cellarium</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 04 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/glitzhd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/glitzhd"
-                >
-
-                    <div class="artist-fallback">
-                        GH
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/glitzhd" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/glitzhd">
+                    <div class="artist-fallback">GH</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="GlitzHD"
-                    >
-
+                    <img class="artist-image" alt="GlitzHD">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            04
-                        </span>
-
-                        <span class="artist-name">
-                            GlitzHD
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">04</span>
+                        <span class="artist-name">GlitzHD</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 05 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/marinhomsic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/marinhomsic"
-                >
-
-                    <div class="artist-fallback">
-                        M
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/marinhomsic" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/marinhomsic">
+                    <div class="artist-fallback">M</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Marinho"
-                    >
-
+                    <img class="artist-image" alt="Marinho">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            05
-                        </span>
-
-                        <span class="artist-name">
-                            Marinho
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">05</span>
+                        <span class="artist-name">Marinho</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 06 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/zentto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/zentto"
-                >
-
-                    <div class="artist-fallback">
-                        Z
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/zentto" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/zentto">
+                    <div class="artist-fallback">Z</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Zentto"
-                    >
-
+                    <img class="artist-image" alt="Zentto">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            06
-                        </span>
-
-                        <span class="artist-name">
-                            Zentto
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">06</span>
+                        <span class="artist-name">Zentto</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 07 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/aronsho"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/aronsho"
-                >
-
-                    <div class="artist-fallback">
-                        A
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/aronsho" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/aronsho">
+                    <div class="artist-fallback">A</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Aronsho"
-                    >
-
+                    <img class="artist-image" alt="Aronsho">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            07
-                        </span>
-
-                        <span class="artist-name">
-                            Aronsho
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">07</span>
+                        <span class="artist-name">Aronsho</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 08 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/erukuserasu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/erukuserasu"
-                >
-
-                    <div class="artist-fallback">
-                        E
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/erukuserasu" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/erukuserasu">
+                    <div class="artist-fallback">E</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Erukuserasu"
-                    >
-
+                    <img class="artist-image" alt="Erukuserasu">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            08
-                        </span>
-
-                        <span class="artist-name">
-                            Erukuserasu
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">08</span>
+                        <span class="artist-name">Erukuserasu</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 09 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/chrx7-377306345"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/chrx7-377306345"
-                >
-
-                    <div class="artist-fallback">
-                        C7
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/chrx7-377306345" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/chrx7-377306345">
+                    <div class="artist-fallback">C7</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="CHRX7"
-                    >
-
+                    <img class="artist-image" alt="CHRX7">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            09
-                        </span>
-
-                        <span class="artist-name">
-                            CHRX7
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">09</span>
+                        <span class="artist-name">CHRX7</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 10 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/cazsem"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/cazsem"
-                >
-
-                    <div class="artist-fallback">
-                        C
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/cazsem" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/cazsem">
+                    <div class="artist-fallback">C</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Cazsem"
-                    >
-
+                    <img class="artist-image" alt="Cazsem">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            10
-                        </span>
-
-                        <span class="artist-name">
-                            Cazsem
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">10</span>
+                        <span class="artist-name">Cazsem</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 11 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/from-the-sky-553525833"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/from-the-sky-553525833"
-                >
-
-                    <div class="artist-fallback">
-                        FTS
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/from-the-sky-553525833" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/from-the-sky-553525833">
+                    <div class="artist-fallback">FTS</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="From The Sky"
-                    >
-
+                    <img class="artist-image" alt="From The Sky">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            11
-                        </span>
-
-                        <span class="artist-name">
-                            From The Sky
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">11</span>
+                        <span class="artist-name">From The Sky</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 12 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/no-name-93487397"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/no-name-93487397"
-                >
-
-                    <div class="artist-fallback">
-                        NN
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/no-name-93487397" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/no-name-93487397">
+                    <div class="artist-fallback">NN</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="No Name"
-                    >
-
+                    <img class="artist-image" alt="No Name">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            12
-                        </span>
-
-                        <span class="artist-name">
-                            No Name
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">12</span>
+                        <span class="artist-name">No Name</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 13 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/numin-to-the-world"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/numin-to-the-world"
-                >
-
-                    <div class="artist-fallback">
-                        N
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/numin-to-the-world" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/numin-to-the-world">
+                    <div class="artist-fallback">N</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Numin To The World"
-                    >
-
+                    <img class="artist-image" alt="Numin To The World">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            13
-                        </span>
-
-                        <span class="artist-name">
-                            Numin To The World
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">13</span>
+                        <span class="artist-name">Numin To The World</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 14 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/siriuxdubs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/siriuxdubs"
-                >
-
-                    <div class="artist-fallback">
-                        SD
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/siriuxdubs" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/siriuxdubs">
+                    <div class="artist-fallback">SD</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Siriux Dubs"
-                    >
-
+                    <img class="artist-image" alt="Siriux Dubs">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            14
-                        </span>
-
-                        <span class="artist-name">
-                            Siriux Dubs
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">14</span>
+                        <span class="artist-name">Siriux Dubs</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 15 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/mosirax"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/mosirax"
-                >
-
-                    <div class="artist-fallback">
-                        M
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/mosirax" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/mosirax">
+                    <div class="artist-fallback">M</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Mosirax"
-                    >
-
+                    <img class="artist-image" alt="Mosirax">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            15
-                        </span>
-
-                        <span class="artist-name">
-                            Mosirax
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">15</span>
+                        <span class="artist-name">Mosirax</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 16 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/dietogetherinvenus"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/dietogetherinvenus"
-                >
-
-                    <div class="artist-fallback">
-                        DTV
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/dietogetherinvenus" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/dietogetherinvenus">
+                    <div class="artist-fallback">DTV</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Die Together In Venus"
-                    >
-
+                    <img class="artist-image" alt="Die Together In Venus">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            16
-                        </span>
-
-                        <span class="artist-name">
-                            Die Together In Venus
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">16</span>
+                        <span class="artist-name">Die Together In Venus</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 17 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/t3g0_music"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/t3g0_music"
-                >
-
-                    <div class="artist-fallback">
-                        T3
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/t3g0_music" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/t3g0_music">
+                    <div class="artist-fallback">T3</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="T3G0"
-                    >
-
+                    <img class="artist-image" alt="T3G0">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            17
-                        </span>
-
-                        <span class="artist-name">
-                            T3G0
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">17</span>
+                        <span class="artist-name">T3G0</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 18 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/imraptormusic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/imraptormusic"
-                >
-
-                    <div class="artist-fallback">
-                        R
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/imraptormusic" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/imraptormusic">
+                    <div class="artist-fallback">R</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Raptor"
-                    >
-
+                    <img class="artist-image" alt="Raptor">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            18
-                        </span>
-
-                        <span class="artist-name">
-                            Raptor
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">18</span>
+                        <span class="artist-name">Raptor</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
                 <!-- 19 -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/mental-dawn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-soundcloud="https://soundcloud.com/mental-dawn"
-                >
-
-                    <div class="artist-fallback">
-                        MD
-                    </div>
-
+                <a class="artist-card" href="https://soundcloud.com/mental-dawn" target="_blank" rel="noopener noreferrer" data-soundcloud="https://soundcloud.com/mental-dawn">
+                    <div class="artist-fallback">MD</div>
                     <div class="artist-loading"></div>
-
-                    <img
-                        class="artist-image"
-                        alt="Mental Dawn"
-                    >
-
+                    <img class="artist-image" alt="Mental Dawn">
                     <div class="artist-overlay">
-
-                        <span class="artist-index">
-                            19
-                        </span>
-
-                        <span class="artist-name">
-                            Mental Dawn
-                        </span>
-
-                        <span class="artist-link">
-                            SoundCloud ↗
-                        </span>
-
+                        <span class="artist-index">19</span>
+                        <span class="artist-name">Mental Dawn</span>
+                        <span class="artist-link">SoundCloud ↗</span>
                     </div>
-
                 </a>
-
 
             </div>
 
