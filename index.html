@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>CHIEFKID COLLECTIVE</title>
 
@@ -12,7 +16,11 @@
         content="CHIEFKID COLLECTIVE — Independent music collective featuring artists, releases, stems, remixes and original electronic music."
     >
 
-    <link rel="icon" type="image/png" href="isologo negro.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="isologo negro.png"
+    >
 
     <style>
 
@@ -168,7 +176,8 @@
 
             letter-spacing: 0.16em;
 
-            color: rgba(255, 255, 255, 0.72);
+            color:
+                rgba(255, 255, 255, 0.72);
 
             transition:
                 color 0.25s ease;
@@ -220,20 +229,32 @@
                 100px;
         }
 
-        .hero-logo {
-            width: min(650px, 82vw);
+        /*
+         * LOGO PRINCIPAL
+         *
+         * Aumentado respecto a la versión anterior.
+         */
 
-            max-height: 220px;
+        .hero-logo {
+            width: min(900px, 90vw);
+
+            max-width: 900px;
+
+            max-height: 330px;
+
+            height: auto;
 
             object-fit: contain;
 
-            margin-bottom: 30px;
+            margin-bottom: 38px;
 
             filter:
                 drop-shadow(
-                    0 20px 50px
-                    rgba(0, 0, 0, 0.5)
+                    0 25px 60px
+                    rgba(0, 0, 0, 0.58)
                 );
+
+            transform: scale(1.02);
         }
 
         .hero p {
@@ -308,7 +329,7 @@
 
             gap: 30px;
 
-            margin-bottom: 50px;
+            margin-bottom: 55px;
         }
 
         .section-number {
@@ -323,7 +344,8 @@
         }
 
         .section-title {
-            font-size: clamp(34px, 6vw, 82px);
+            font-size:
+                clamp(34px, 6vw, 82px);
 
             line-height: 0.95;
 
@@ -349,35 +371,180 @@
 
 
         /* =========================================================
-           RELEASES
+           MUSIC / RELEASES
         ========================================================= */
 
-        .release-feature {
+        .release-feature,
+        .release-row {
             width: 100%;
 
             max-width: 1300px;
 
-            margin: 0 auto 60px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .release-player {
+
+        /* =========================================================
+           FEATURED PLAYLIST
+        ========================================================= */
+
+        .playlist-feature {
+            display: grid;
+
+            grid-template-columns:
+                minmax(320px, 42%)
+                minmax(0, 58%);
+
+            align-items: stretch;
+
             width: 100%;
 
-            overflow: hidden;
+            margin:
+                0 auto 75px;
 
             background:
-                rgba(0, 0, 0, 0.35);
+                rgba(0, 0, 0, 0.42);
 
             border:
                 1px solid
                 rgba(255, 255, 255, 0.08);
 
+            overflow: hidden;
+
             box-shadow:
                 0 30px 100px
-                rgba(0, 0, 0, 0.45);
+                rgba(0, 0, 0, 0.38);
         }
 
-        .release-player iframe {
+        .playlist-artwork {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            min-height: 420px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #050505
+                );
+        }
+
+        .playlist-artwork img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0;
+
+            transform: scale(1.01);
+
+            transition:
+                opacity 0.5s ease,
+                transform 0.7s ease;
+        }
+
+        .playlist-artwork.loaded img {
+            opacity: 1;
+        }
+
+        .playlist-feature:hover
+        .playlist-artwork img {
+            transform: scale(1.045);
+        }
+
+        .playlist-artwork-fallback {
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 30% 20%,
+                    rgba(255, 255, 255, 0.14),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #191919,
+                    #050505
+                );
+
+            font-size:
+                clamp(34px, 5vw, 70px);
+
+            font-weight: 900;
+
+            letter-spacing: -0.07em;
+        }
+
+        .playlist-artwork.loaded
+        .playlist-artwork-fallback {
+            opacity: 0;
+        }
+
+        .playlist-player {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding:
+                clamp(30px, 5vw, 70px);
+        }
+
+        .player-label {
+            margin-bottom: 12px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+
+            color:
+                rgba(255, 255, 255, 0.42);
+
+            text-transform: uppercase;
+        }
+
+        .playlist-title {
+            margin-bottom: 30px;
+
+            font-size:
+                clamp(28px, 4vw, 54px);
+
+            line-height: 0.95;
+
+            font-weight: 800;
+
+            letter-spacing: -0.055em;
+
+            text-transform: uppercase;
+        }
+
+        .playlist-player iframe {
             display: block;
 
             width: 100%;
@@ -385,48 +552,30 @@
             border: none;
         }
 
-        .release-note {
-            margin-top: 18px;
 
+        /* =========================================================
+           INDIVIDUAL RELEASES
+        ========================================================= */
+
+        .release-list {
             display: flex;
 
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
 
-            gap: 20px;
+            gap: 70px;
         }
 
-        .release-note strong {
-            font-size: 12px;
-
-            letter-spacing: 0.14em;
-
-            text-transform: uppercase;
-        }
-
-        .release-note span {
-            font-size: 10px;
-
-            letter-spacing: 0.12em;
-
-            color:
-                rgba(255, 255, 255, 0.4);
-
-            text-transform: uppercase;
-        }
-
-        .release-grid {
+        .release-row {
             display: grid;
 
             grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+                minmax(320px, 42%)
+                minmax(0, 58%);
 
-            gap: 25px;
-        }
+            align-items: stretch;
 
-        .release-card {
             background:
-                rgba(0, 0, 0, 0.4);
+                rgba(0, 0, 0, 0.42);
 
             border:
                 1px solid
@@ -434,22 +583,175 @@
 
             overflow: hidden;
 
+            box-shadow:
+                0 30px 90px
+                rgba(0, 0, 0, 0.3);
+        }
+
+        .release-row.reverse {
+            grid-template-columns:
+                minmax(0, 58%)
+                minmax(320px, 42%);
+        }
+
+        .release-row.reverse
+        .release-artwork {
+            order: 2;
+        }
+
+        .release-row.reverse
+        .release-info {
+            order: 1;
+        }
+
+        .release-artwork {
+            position: relative;
+
+            width: 100%;
+
+            min-height: 420px;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #050505
+                );
+        }
+
+        .release-artwork img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0;
+
+            transform: scale(1.01);
+
             transition:
-                transform 0.3s ease,
-                border-color 0.3s ease;
+                opacity 0.5s ease,
+                transform 0.7s ease;
         }
 
-        .release-card:hover {
-            transform: translateY(-5px);
-
-            border-color:
-                rgba(255, 255, 255, 0.2);
+        .release-artwork.loaded img {
+            opacity: 1;
         }
 
-        .release-card iframe {
+        .release-row:hover
+        .release-artwork img {
+            transform: scale(1.045);
+        }
+
+        .release-artwork-fallback {
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 30% 20%,
+                    rgba(255, 255, 255, 0.13),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #050505
+                );
+
+            font-size:
+                clamp(34px, 5vw, 70px);
+
+            font-weight: 900;
+
+            letter-spacing: -0.07em;
+
+            text-transform: uppercase;
+        }
+
+        .release-artwork.loaded
+        .release-artwork-fallback {
+            opacity: 0;
+        }
+
+        .release-info {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding:
+                clamp(30px, 5vw, 65px);
+        }
+
+        .release-number {
+            margin-bottom: 18px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+
+            color:
+                rgba(255, 255, 255, 0.35);
+        }
+
+        .release-info h3 {
+            margin-bottom: 9px;
+
+            font-size:
+                clamp(32px, 4vw, 65px);
+
+            line-height: 0.92;
+
+            font-weight: 800;
+
+            letter-spacing: -0.055em;
+
+            text-transform: uppercase;
+        }
+
+        .release-info p {
+            margin-bottom: 35px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+
+            color:
+                rgba(255, 255, 255, 0.4);
+
+            text-transform: uppercase;
+        }
+
+        .release-info iframe {
             display: block;
 
             width: 100%;
+
+            min-height: 166px;
 
             border: none;
         }
@@ -525,11 +827,13 @@
                 filter 0.5s ease;
         }
 
-        .artist-card.loaded .artist-image {
+        .artist-card.loaded
+        .artist-image {
             opacity: 1;
         }
 
-        .artist-card:hover .artist-image {
+        .artist-card:hover
+        .artist-image {
             transform: scale(1.06);
 
             filter:
@@ -561,16 +865,21 @@
             color:
                 rgba(255, 255, 255, 0.8);
 
-            font-size: clamp(30px, 4vw, 55px);
+            font-size:
+                clamp(30px, 4vw, 55px);
 
             font-weight: 900;
 
             letter-spacing: -0.06em;
 
             z-index: -1;
+
+            transition:
+                opacity 0.4s ease;
         }
 
-        .artist-card.loaded .artist-fallback {
+        .artist-card.loaded
+        .artist-fallback {
             opacity: 0;
         }
 
@@ -645,11 +954,11 @@
             top: 50%;
             left: 50%;
 
-            transform:
-                translate(-50%, -50%);
-
             width: 18px;
             height: 18px;
+
+            transform:
+                translate(-50%, -50%);
 
             border:
                 1px solid
@@ -669,16 +978,19 @@
                 opacity 0.25s ease;
         }
 
-        .artist-card.loaded .artist-loading {
+        .artist-card.loaded
+        .artist-loading {
             opacity: 0;
         }
 
         @keyframes spin {
+
             to {
                 transform:
                     translate(-50%, -50%)
                     rotate(360deg);
             }
+
         }
 
 
@@ -910,7 +1222,7 @@
 
 
         /* =========================================================
-           RESPONSIVE
+           RESPONSIVE — TABLET
         ========================================================= */
 
         @media (max-width: 1100px) {
@@ -920,8 +1232,25 @@
                     repeat(3, minmax(0, 1fr));
             }
 
+            .playlist-feature,
+            .release-row {
+                grid-template-columns:
+                    minmax(280px, 45%)
+                    minmax(0, 55%);
+            }
+
+            .release-row.reverse {
+                grid-template-columns:
+                    minmax(0, 55%)
+                    minmax(280px, 45%);
+            }
+
         }
 
+
+        /* =========================================================
+           RESPONSIVE — MOBILE
+        ========================================================= */
 
         @media (max-width: 800px) {
 
@@ -940,9 +1269,25 @@
                 font-size: 9px;
             }
 
+
+            /* HERO */
+
             .hero {
                 padding-top: 120px;
             }
+
+            .hero-logo {
+                width: 92vw;
+
+                max-width: 700px;
+
+                max-height: 230px;
+
+                margin-bottom: 30px;
+            }
+
+
+            /* SECTION HEADER */
 
             .section-header {
                 flex-direction: column;
@@ -954,9 +1299,59 @@
                 text-align: left;
             }
 
-            .release-grid {
+
+            /* PLAYLIST */
+
+            .playlist-feature {
+                grid-template-columns: 1fr;
+
+                margin-bottom: 55px;
+            }
+
+            .playlist-artwork {
+                min-height: 0;
+
+                aspect-ratio: 1 / 1;
+            }
+
+            .playlist-player {
+                padding: 30px;
+            }
+
+
+            /* RELEASES */
+
+            .release-list {
+                gap: 50px;
+            }
+
+            .release-row,
+            .release-row.reverse {
                 grid-template-columns: 1fr;
             }
+
+            .release-row.reverse
+            .release-artwork {
+                order: 1;
+            }
+
+            .release-row.reverse
+            .release-info {
+                order: 2;
+            }
+
+            .release-artwork {
+                min-height: 0;
+
+                aspect-ratio: 1 / 1;
+            }
+
+            .release-info {
+                padding: 30px;
+            }
+
+
+            /* ARTISTS */
 
             .artists-grid {
                 grid-template-columns:
@@ -973,15 +1368,24 @@
                 padding: 16px;
             }
 
+
+            /* STEMS */
+
             .stems-container {
                 grid-template-columns: 1fr;
             }
+
+
+            /* CONTACT */
 
             .contact-content {
                 flex-direction: column;
 
                 align-items: flex-start;
             }
+
+
+            /* FOOTER */
 
             footer {
                 flex-direction: column;
@@ -992,6 +1396,10 @@
         }
 
 
+        /* =========================================================
+           RESPONSIVE — SMALL MOBILE
+        ========================================================= */
+
         @media (max-width: 480px) {
 
             nav a:nth-child(3),
@@ -1000,7 +1408,9 @@
             }
 
             .hero-logo {
-                width: 88vw;
+                width: 94vw;
+
+                max-height: 190px;
             }
 
             section {
@@ -1027,6 +1437,7 @@
         }
 
     </style>
+
 </head>
 
 
@@ -1045,7 +1456,12 @@
         playsinline
         preload="auto"
     >
-        <source src="background.mp4" type="video/mp4">
+
+        <source
+            src="background.mp4"
+            type="video/mp4"
+        >
+
     </video>
 
     <div class="background-overlay"></div>
@@ -1062,11 +1478,14 @@
             class="header-logo"
             aria-label="ChiefKid Collective"
         >
+
             <img
                 src="isologo negro.png"
                 alt="ChiefKid Collective"
             >
+
         </a>
+
 
         <nav>
 
@@ -1108,11 +1527,13 @@
                 alt="CHIEFKID COLLECTIVE"
             >
 
+
             <p>
                 Independent music collective focused on
                 electronic music, original releases,
                 collaborations and forward-thinking sounds.
             </p>
+
 
             <a
                 class="hero-button"
@@ -1125,10 +1546,11 @@
 
 
         <!-- =====================================================
-             RELEASES
+             MUSIC
         ====================================================== -->
 
         <section id="releases">
+
 
             <div class="section-header">
 
@@ -1144,6 +1566,7 @@
 
                 </div>
 
+
                 <p class="section-description">
                     Explore the latest music released through
                     ChiefKid Collective and discover the sounds
@@ -1153,131 +1576,442 @@
             </div>
 
 
-            <!-- FEATURED PLAYLIST -->
+            <!-- =================================================
+                 FEATURED PLAYLIST
+            ================================================== -->
 
-            <div class="release-feature">
+            <div
+                class="playlist-feature"
+                data-soundcloud="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
+            >
 
-                <div class="release-player">
+                <div
+                    class="playlist-artwork"
+                    data-artwork-container
+                >
 
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
+                    <div
+                        class="playlist-artwork-fallback"
+                    >
+                        CHIEFKID<br>FILES
+                    </div>
+
+                    <img
+                        data-artwork
+                        alt="ChiefKid Files"
+                    >
 
                 </div>
 
-                <div class="release-note">
 
-                    <strong>
-                        CHIEFKID FILES
-                    </strong>
+                <div class="playlist-player">
 
-                    <span>
+                    <div class="player-label">
                         COLLECTIVE PLAYLIST
-                    </span>
+                    </div>
+
+                    <div class="playlist-title">
+                        CHIEFKID FILES
+                    </div>
+
+
+                    <iframe
+                        height="166"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                    ></iframe>
 
                 </div>
 
             </div>
 
 
-            <!-- RELEASE GRID -->
+            <!-- =================================================
+                 RELEASE LIST
+            ================================================== -->
 
-            <div class="release-grid">
-
-
-                <div class="release-card">
-
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sm_lc&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
-
-                </div>
+            <div class="release-list">
 
 
-                <div class="release-card">
+                <!-- 01 -->
 
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/oracle&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
+                <article
+                    class="release-row"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/sm_lc"
+                >
 
-                </div>
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
 
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            SM_LC
+                        </div>
 
-                <div class="release-card">
+                        <img
+                            data-artwork
+                            alt="SM_LC"
+                        >
 
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/valhalla&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
-
-                </div>
-
-
-                <div class="release-card">
-
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/hnclosetou&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
-
-                </div>
+                    </div>
 
 
-                <div class="release-card">
+                    <div class="release-info">
 
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/phantomm&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
+                        <div class="release-number">
+                            01 / RELEASE
+                        </div>
 
-                </div>
+                        <h3>
+                            SM_LC
+                        </h3>
 
-
-                <div class="release-card">
-
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/boosted&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
-
-                </div>
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
 
 
-                <div class="release-card">
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sm_lc&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
 
-                    <iframe
-                        height="450"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/junker&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                    ></iframe>
+                    </div>
 
-                </div>
+                </article>
+
+
+                <!-- 02 -->
+
+                <article
+                    class="release-row reverse"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/oracle"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            ORACLE
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="Oracle"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            02 / RELEASE
+                        </div>
+
+                        <h3>
+                            ORACLE
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/oracle&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article
+                    class="release-row"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/valhalla"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            VALHALLA
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="Valhalla"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            03 / RELEASE
+                        </div>
+
+                        <h3>
+                            VALHALLA
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/valhalla&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article
+                    class="release-row reverse"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/hnclosetou"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            HNCLOSETou
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="HNCLOSETou"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            04 / RELEASE
+                        </div>
+
+                        <h3>
+                            HNCLOSETou
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/hnclosetou&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article
+                    class="release-row"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/phantomm"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            PHANTOMM
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="Phantomm"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            05 / RELEASE
+                        </div>
+
+                        <h3>
+                            PHANTOMM
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/phantomm&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article
+                    class="release-row reverse"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/boosted"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            BOOSTED
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="Boosted"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            06 / RELEASE
+                        </div>
+
+                        <h3>
+                            BOOSTED
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/boosted&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 07 -->
+
+                <article
+                    class="release-row"
+                    data-soundcloud="https://soundcloud.com/chiefkidmusic/junker"
+                >
+
+                    <div
+                        class="release-artwork"
+                        data-artwork-container
+                    >
+
+                        <div
+                            class="release-artwork-fallback"
+                        >
+                            JUNKER
+                        </div>
+
+                        <img
+                            data-artwork
+                            alt="Junker"
+                        >
+
+                    </div>
+
+
+                    <div class="release-info">
+
+                        <div class="release-number">
+                            07 / RELEASE
+                        </div>
+
+                        <h3>
+                            JUNKER
+                        </h3>
+
+                        <p>
+                            CHIEFKID COLLECTIVE
+                        </p>
+
+
+                        <iframe
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/junker&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
@@ -1326,7 +2060,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/lonelyfunmusic"
-                    data-name="Lonely Fun"
                 >
 
                     <div class="artist-fallback">
@@ -1367,7 +2100,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/sotw808"
-                    data-name="Sotw808"
                 >
 
                     <div class="artist-fallback">
@@ -1408,7 +2140,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/cellariumusic"
-                    data-name="Cellarium"
                 >
 
                     <div class="artist-fallback">
@@ -1449,7 +2180,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/glitzhd"
-                    data-name="GlitzHD"
                 >
 
                     <div class="artist-fallback">
@@ -1490,7 +2220,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/marinhomsic"
-                    data-name="Marinho"
                 >
 
                     <div class="artist-fallback">
@@ -1531,7 +2260,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/zentto"
-                    data-name="Zentto"
                 >
 
                     <div class="artist-fallback">
@@ -1572,7 +2300,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/aronsho"
-                    data-name="Aronsho"
                 >
 
                     <div class="artist-fallback">
@@ -1613,7 +2340,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/erukuserasu"
-                    data-name="Erukuserasu"
                 >
 
                     <div class="artist-fallback">
@@ -1654,7 +2380,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/chrx7-377306345"
-                    data-name="CHRX7"
                 >
 
                     <div class="artist-fallback">
@@ -1695,7 +2420,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/cazsem"
-                    data-name="Cazsem"
                 >
 
                     <div class="artist-fallback">
@@ -1736,7 +2460,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/from-the-sky-553525833"
-                    data-name="From The Sky"
                 >
 
                     <div class="artist-fallback">
@@ -1777,7 +2500,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/no-name-93487397"
-                    data-name="No Name"
                 >
 
                     <div class="artist-fallback">
@@ -1818,7 +2540,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/numin-to-the-world"
-                    data-name="Numin To The World"
                 >
 
                     <div class="artist-fallback">
@@ -1859,7 +2580,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/siriuxdubs"
-                    data-name="Siriux Dubs"
                 >
 
                     <div class="artist-fallback">
@@ -1900,7 +2620,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/mosirax"
-                    data-name="Mosirax"
                 >
 
                     <div class="artist-fallback">
@@ -1941,7 +2660,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/dietogetherinvenus"
-                    data-name="Die Together In Venus"
                 >
 
                     <div class="artist-fallback">
@@ -1982,7 +2700,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/t3g0_music"
-                    data-name="T3G0"
                 >
 
                     <div class="artist-fallback">
@@ -2023,7 +2740,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/imraptormusic"
-                    data-name="Raptor"
                 >
 
                     <div class="artist-fallback">
@@ -2064,7 +2780,6 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     data-soundcloud="https://soundcloud.com/mental-dawn"
-                    data-name="Mental Dawn"
                 >
 
                     <div class="artist-fallback">
@@ -2195,12 +2910,14 @@
                 04 / CONTACT
             </div>
 
+
             <div class="contact-content">
 
                 <h2 class="contact-title">
                     Let's<br>
                     Connect
                 </h2>
+
 
                 <div class="contact-right">
 
@@ -2210,6 +2927,7 @@
                         ChiefKid Collective related projects,
                         get in touch.
                     </p>
+
 
                     <a
                         class="contact-email"
@@ -2232,6 +2950,7 @@
     ========================================================== -->
 
     <footer>
+
 
         <a
             href="#home"
@@ -2256,6 +2975,7 @@
                 SoundCloud
             </a>
 
+
             <a
                 href="https://www.instagram.com/chiefkidmusic/"
                 target="_blank"
@@ -2264,9 +2984,8 @@
                 Instagram
             </a>
 
-            <a
-                href="#contact"
-            >
+
+            <a href="#contact">
                 Contact
             </a>
 
@@ -2286,24 +3005,34 @@
 
     <script>
 
+
         /* =====================================================
            HEADER SCROLL
         ====================================================== */
 
         const header =
-            document.getElementById("site-header");
+            document.getElementById(
+                "site-header"
+            );
+
 
         window.addEventListener(
             "scroll",
             () => {
 
-                if (window.scrollY > 40) {
+                if (
+                    window.scrollY > 40
+                ) {
 
-                    header.classList.add("scrolled");
+                    header.classList.add(
+                        "scrolled"
+                    );
 
                 } else {
 
-                    header.classList.remove("scrolled");
+                    header.classList.remove(
+                        "scrolled"
+                    );
 
                 }
 
@@ -2315,11 +3044,178 @@
 
 
         /* =====================================================
-           SOUNDCLOUD ARTIST IMAGES
+           SOUNDCLOUD ARTWORK LOADER
            
-           SoundCloud provides oEmbed for embeds/profile URLs.
-           We request the profile metadata and use the returned
-           thumbnail when available.
+           Obtains the actual artwork from SoundCloud oEmbed.
+           This is used both for:
+           
+           - Playlist
+           - Releases
+           - Artist profile cards
+        ====================================================== */
+
+        async function getSoundCloudData(
+            soundcloudURL
+        ) {
+
+            const endpoint =
+                "https://soundcloud.com/oembed" +
+                "?format=json" +
+                "&url=" +
+                encodeURIComponent(
+                    soundcloudURL
+                );
+
+
+            const response =
+                await fetch(
+                    endpoint,
+                    {
+                        method: "GET",
+                        mode: "cors",
+                        cache: "force-cache"
+                    }
+                );
+
+
+            if (
+                !response.ok
+            ) {
+
+                throw new Error(
+                    "SoundCloud oEmbed error"
+                );
+
+            }
+
+
+            return await response.json();
+
+        }
+
+
+        /* =====================================================
+           RELEASE ARTWORK
+        ====================================================== */
+
+        const artworkElements =
+            document.querySelectorAll(
+                "[data-soundcloud]"
+            );
+
+
+        async function loadArtwork(
+            element
+        ) {
+
+            const url =
+                element.dataset.soundcloud;
+
+
+            const image =
+                element.querySelector(
+                    "[data-artwork]"
+                );
+
+
+            /*
+             * Artist cards are handled separately below.
+             */
+
+            if (!image) {
+                return;
+            }
+
+
+            const container =
+                element.querySelector(
+                    "[data-artwork-container]"
+                );
+
+
+            try {
+
+                const data =
+                    await getSoundCloudData(
+                        url
+                    );
+
+
+                if (
+                    data &&
+                    data.thumbnail_url
+                ) {
+
+                    image.onload =
+                        () => {
+
+                            container.classList.add(
+                                "loaded"
+                            );
+
+                        };
+
+
+                    image.onerror =
+                        () => {
+
+                            container.classList.remove(
+                                "loaded"
+                            );
+
+                        };
+
+
+                    image.src =
+                        data.thumbnail_url;
+
+                }
+
+            } catch (error) {
+
+                console.warn(
+                    "Artwork unavailable:",
+                    url
+                );
+
+            }
+
+        }
+
+
+        artworkElements.forEach(
+            (element, index) => {
+
+                /*
+                 * Only elements containing
+                 * data-artwork belong here.
+                 */
+
+                if (
+                    element.querySelector(
+                        "[data-artwork]"
+                    )
+                ) {
+
+                    setTimeout(
+                        () => {
+
+                            loadArtwork(
+                                element
+                            );
+
+                        },
+                        index * 100
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ARTIST PROFILE IMAGES
         ====================================================== */
 
         const artistCards =
@@ -2328,49 +3224,27 @@
             );
 
 
-        async function loadArtistImage(card) {
+        async function loadArtistImage(
+            card
+        ) {
 
-            const soundcloudURL =
+            const url =
                 card.dataset.soundcloud;
 
+
             const image =
-                card.querySelector(".artist-image");
+                card.querySelector(
+                    ".artist-image"
+                );
 
 
             try {
 
-                const endpoint =
-                    "https://soundcloud.com/oembed" +
-                    "?format=json" +
-                    "&url=" +
-                    encodeURIComponent(soundcloudURL);
-
-
-                const response =
-                    await fetch(
-                        endpoint,
-                        {
-                            method: "GET",
-                            mode: "cors",
-                            cache: "force-cache"
-                        }
-                    );
-
-
-                if (!response.ok) {
-                    throw new Error(
-                        "SoundCloud oEmbed request failed"
-                    );
-                }
-
-
                 const data =
-                    await response.json();
+                    await getSoundCloudData(
+                        url
+                    );
 
-
-                /*
-                 * SoundCloud oEmbed can return a thumbnail.
-                 */
 
                 if (
                     data &&
@@ -2386,6 +3260,7 @@
 
                         };
 
+
                     image.onerror =
                         () => {
 
@@ -2395,61 +3270,17 @@
 
                         };
 
+
                     image.src =
                         data.thumbnail_url;
 
-                    return;
-
                 }
-
-
-                /*
-                 * Some responses can expose an image
-                 * through the embedded HTML.
-                 */
-
-                if (
-                    data &&
-                    typeof data.html === "string"
-                ) {
-
-                    const match =
-                        data.html.match(
-                            /https?:\/\/[^"' ]+\.(?:jpg|jpeg|png|webp)/i
-                        );
-
-
-                    if (match) {
-
-                        image.onload =
-                            () => {
-
-                                card.classList.add(
-                                    "loaded"
-                                );
-
-                            };
-
-                        image.src =
-                            match[0];
-
-                        return;
-
-                    }
-
-                }
-
 
             } catch (error) {
 
-                /*
-                 * Do not show fake images.
-                 * The fallback initials remain visible.
-                 */
-
                 console.warn(
-                    "Could not load SoundCloud image:",
-                    soundcloudURL
+                    "Artist image unavailable:",
+                    url
                 );
 
             }
@@ -2460,16 +3291,15 @@
         artistCards.forEach(
             (card, index) => {
 
-                /*
-                 * Small stagger prevents all requests
-                 * from firing at exactly the same time.
-                 */
-
                 setTimeout(
                     () => {
-                        loadArtistImage(card);
+
+                        loadArtistImage(
+                            card
+                        );
+
                     },
-                    index * 80
+                    index * 100
                 );
 
             }
@@ -2496,27 +3326,39 @@
                                     "href"
                                 );
 
+
                             if (
                                 targetID === "#"
                             ) {
+
                                 return;
+
                             }
+
 
                             const target =
                                 document.querySelector(
                                     targetID
                                 );
 
+
                             if (!target) {
+
                                 return;
+
                             }
+
 
                             event.preventDefault();
 
+
                             target.scrollIntoView(
                                 {
-                                    behavior: "smooth",
-                                    block: "start"
+                                    behavior:
+                                        "smooth",
+
+                                    block:
+                                        "start"
                                 }
                             );
 
@@ -2537,13 +3379,16 @@
             );
 
 
-        if (backgroundVideo) {
+        if (
+            backgroundVideo
+        ) {
 
-            backgroundVideo.play()
+            backgroundVideo
+                .play()
                 .catch(
                     () => {
                         /*
-                         * Browser autoplay restrictions
+                         * Autoplay restrictions
                          * are handled silently.
                          */
                     }
