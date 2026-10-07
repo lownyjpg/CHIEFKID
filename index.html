@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -229,12 +230,6 @@
                 100px;
         }
 
-        /*
-         * LOGO PRINCIPAL
-         *
-         * Aumentado respecto a la versión anterior.
-         */
-
         .hero-logo {
             width: min(900px, 90vw);
 
@@ -371,7 +366,10 @@
 
 
         /* =========================================================
-           MUSIC / RELEASES
+           RELEASE CONTAINERS
+           
+           Artwork reduced from ~42% to ~34%.
+           Player area is now larger.
         ========================================================= */
 
         .release-feature,
@@ -393,8 +391,8 @@
             display: grid;
 
             grid-template-columns:
-                minmax(320px, 42%)
-                minmax(0, 58%);
+                minmax(260px, 34%)
+                minmax(0, 66%);
 
             align-items: stretch;
 
@@ -424,7 +422,7 @@
 
             aspect-ratio: 1 / 1;
 
-            min-height: 420px;
+            min-height: 360px;
 
             overflow: hidden;
 
@@ -496,6 +494,9 @@
             font-weight: 900;
 
             letter-spacing: -0.07em;
+
+            transition:
+                opacity 0.4s ease;
         }
 
         .playlist-artwork.loaded
@@ -511,7 +512,7 @@
             justify-content: center;
 
             padding:
-                clamp(30px, 5vw, 70px);
+                clamp(30px, 4vw, 60px);
         }
 
         .player-label {
@@ -530,7 +531,7 @@
         }
 
         .playlist-title {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
 
             font-size:
                 clamp(28px, 4vw, 54px);
@@ -552,6 +553,10 @@
             border: none;
         }
 
+        .spotify-player {
+            margin-top: 12px;
+        }
+
 
         /* =========================================================
            INDIVIDUAL RELEASES
@@ -562,15 +567,15 @@
 
             flex-direction: column;
 
-            gap: 70px;
+            gap: 55px;
         }
 
         .release-row {
             display: grid;
 
             grid-template-columns:
-                minmax(320px, 42%)
-                minmax(0, 58%);
+                minmax(260px, 34%)
+                minmax(0, 66%);
 
             align-items: stretch;
 
@@ -590,8 +595,8 @@
 
         .release-row.reverse {
             grid-template-columns:
-                minmax(0, 58%)
-                minmax(320px, 42%);
+                minmax(0, 66%)
+                minmax(260px, 34%);
         }
 
         .release-row.reverse
@@ -609,7 +614,7 @@
 
             width: 100%;
 
-            min-height: 420px;
+            min-height: 350px;
 
             aspect-ratio: 1 / 1;
 
@@ -678,13 +683,16 @@
                 );
 
             font-size:
-                clamp(34px, 5vw, 70px);
+                clamp(28px, 4vw, 60px);
 
             font-weight: 900;
 
             letter-spacing: -0.07em;
 
             text-transform: uppercase;
+
+            transition:
+                opacity 0.4s ease;
         }
 
         .release-artwork.loaded
@@ -700,11 +708,11 @@
             justify-content: center;
 
             padding:
-                clamp(30px, 5vw, 65px);
+                clamp(28px, 4vw, 55px);
         }
 
         .release-number {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
 
             font-size: 9px;
 
@@ -720,7 +728,7 @@
             margin-bottom: 9px;
 
             font-size:
-                clamp(32px, 4vw, 65px);
+                clamp(30px, 3.8vw, 60px);
 
             line-height: 0.92;
 
@@ -732,7 +740,7 @@
         }
 
         .release-info p {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
 
             font-size: 9px;
 
@@ -746,14 +754,37 @@
             text-transform: uppercase;
         }
 
+        .player-platform {
+            margin-top: 2px;
+
+            margin-bottom: 7px;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+
+            color:
+                rgba(255, 255, 255, 0.32);
+
+            text-transform: uppercase;
+        }
+
         .release-info iframe {
             display: block;
 
             width: 100%;
 
-            min-height: 166px;
-
             border: none;
+        }
+
+        .soundcloud-player {
+            height: 166px;
+        }
+
+        .spotify-track {
+            height: 80px;
         }
 
 
@@ -1235,14 +1266,14 @@
             .playlist-feature,
             .release-row {
                 grid-template-columns:
-                    minmax(280px, 45%)
-                    minmax(0, 55%);
+                    minmax(230px, 34%)
+                    minmax(0, 66%);
             }
 
             .release-row.reverse {
                 grid-template-columns:
-                    minmax(0, 55%)
-                    minmax(280px, 45%);
+                    minmax(0, 66%)
+                    minmax(230px, 34%);
             }
 
         }
@@ -1322,7 +1353,7 @@
             /* RELEASES */
 
             .release-list {
-                gap: 50px;
+                gap: 45px;
             }
 
             .release-row,
@@ -1434,6 +1465,14 @@
                 flex-wrap: wrap;
             }
 
+            .soundcloud-player {
+                height: 166px;
+            }
+
+            .spotify-track {
+                height: 80px;
+            }
+
         }
 
     </style>
@@ -1527,13 +1566,11 @@
                 alt="CHIEFKID COLLECTIVE"
             >
 
-
             <p>
                 Independent music collective focused on
                 electronic music, original releases,
                 collaborations and forward-thinking sounds.
             </p>
-
 
             <a
                 class="hero-button"
@@ -1590,9 +1627,7 @@
                     data-artwork-container
                 >
 
-                    <div
-                        class="playlist-artwork-fallback"
-                    >
+                    <div class="playlist-artwork-fallback">
                         CHIEFKID<br>FILES
                     </div>
 
@@ -1615,12 +1650,33 @@
                     </div>
 
 
+                    <!-- SOUNDCLOUD PLAYLIST -->
+
                     <iframe
+                        class="soundcloud-player"
                         height="166"
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay"
                         src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                    ></iframe>
+
+
+                    <!-- SPOTIFY PLAYLIST -->
+
+                    <div class="player-platform">
+                        SPOTIFY
+                    </div>
+
+                    <iframe
+                        class="spotify-player"
+                        src="https://open.spotify.com/embed/playlist/08BW3y8BNWCbW0GZbvQQh9?utm_source=generator&theme=0"
+                        width="100%"
+                        height="152"
+                        frameborder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
                     ></iframe>
 
                 </div>
@@ -1635,11 +1691,14 @@
             <div class="release-list">
 
 
-                <!-- 01 -->
+                <!-- =================================================
+                     01 — SM_LC
+                ================================================== -->
 
                 <article
                     class="release-row"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/sm_lc"
+                    data-title="SM_LC"
                 >
 
                     <div
@@ -1647,9 +1706,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             SM_LC
                         </div>
 
@@ -1667,7 +1724,7 @@
                             01 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             SM_LC
                         </h3>
 
@@ -1676,12 +1733,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sm_lc&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/0UVMMgmYnU4UdcmWAMkiyO?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1689,11 +1766,14 @@
                 </article>
 
 
-                <!-- 02 -->
+                <!-- =================================================
+                     02 — ORACLE
+                ================================================== -->
 
                 <article
                     class="release-row reverse"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/oracle"
+                    data-title="ORACLE"
                 >
 
                     <div
@@ -1701,9 +1781,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             ORACLE
                         </div>
 
@@ -1721,7 +1799,7 @@
                             02 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             ORACLE
                         </h3>
 
@@ -1730,12 +1808,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/oracle&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/1pqQgMmSI9cDfNAbn3r0Hx?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1743,11 +1841,14 @@
                 </article>
 
 
-                <!-- 03 -->
+                <!-- =================================================
+                     03 — VALHALLA
+                ================================================== -->
 
                 <article
                     class="release-row"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/valhalla"
+                    data-title="VALHALLA"
                 >
 
                     <div
@@ -1755,9 +1856,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             VALHALLA
                         </div>
 
@@ -1775,7 +1874,7 @@
                             03 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             VALHALLA
                         </h3>
 
@@ -1784,12 +1883,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/valhalla&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/3G9G6eENhmKqJ3RN41sgWS?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1797,11 +1916,14 @@
                 </article>
 
 
-                <!-- 04 -->
+                <!-- =================================================
+                     04 — H.N. CLOSE TO YOU
+                ================================================== -->
 
                 <article
                     class="release-row reverse"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/hnclosetou"
+                    data-title="H.N. CLOSE TO YOU"
                 >
 
                     <div
@@ -1809,15 +1931,13 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
-                            HNCLOSETou
+                        <div class="release-artwork-fallback">
+                            H.N.<br>CLOSE TO YOU
                         </div>
 
                         <img
                             data-artwork
-                            alt="HNCLOSETou"
+                            alt="H.N. Close To You"
                         >
 
                     </div>
@@ -1829,8 +1949,8 @@
                             04 / RELEASE
                         </div>
 
-                        <h3>
-                            HNCLOSETou
+                        <h3 class="release-title">
+                            H.N. CLOSE TO YOU
                         </h3>
 
                         <p>
@@ -1838,12 +1958,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/hnclosetou&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/5rfi0u9psRedy2pB0SPFTT?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1851,11 +1991,14 @@
                 </article>
 
 
-                <!-- 05 -->
+                <!-- =================================================
+                     05 — PHANTOMM
+                ================================================== -->
 
                 <article
                     class="release-row"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/phantomm"
+                    data-title="PHANTOMM"
                 >
 
                     <div
@@ -1863,9 +2006,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             PHANTOMM
                         </div>
 
@@ -1883,7 +2024,7 @@
                             05 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             PHANTOMM
                         </h3>
 
@@ -1892,12 +2033,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/phantomm&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/2JRC3tVHcO8uyYiAIVQOuZ?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1905,11 +2066,14 @@
                 </article>
 
 
-                <!-- 06 -->
+                <!-- =================================================
+                     06 — BOOSTED
+                ================================================== -->
 
                 <article
                     class="release-row reverse"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/boosted"
+                    data-title="BOOSTED"
                 >
 
                     <div
@@ -1917,9 +2081,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             BOOSTED
                         </div>
 
@@ -1937,7 +2099,7 @@
                             06 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             BOOSTED
                         </h3>
 
@@ -1946,12 +2108,37 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/boosted&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <!--
+                            Spotify #7 supplied by user is an ALBUM,
+                            so this one uses an album embed.
+                        -->
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/album/4OOtxOtCmYI8lNdbMeXOZt?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -1959,11 +2146,14 @@
                 </article>
 
 
-                <!-- 07 -->
+                <!-- =================================================
+                     07 — JUNKER
+                ================================================== -->
 
                 <article
                     class="release-row"
                     data-soundcloud="https://soundcloud.com/chiefkidmusic/junker"
+                    data-title="JUNKER"
                 >
 
                     <div
@@ -1971,9 +2161,7 @@
                         data-artwork-container
                     >
 
-                        <div
-                            class="release-artwork-fallback"
-                        >
+                        <div class="release-artwork-fallback">
                             JUNKER
                         </div>
 
@@ -1991,7 +2179,7 @@
                             07 / RELEASE
                         </div>
 
-                        <h3>
+                        <h3 class="release-title">
                             JUNKER
                         </h3>
 
@@ -2000,12 +2188,32 @@
                         </p>
 
 
+                        <div class="player-platform">
+                            SOUNDCLOUD
+                        </div>
+
                         <iframe
-                            height="166"
+                            class="soundcloud-player"
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/junker&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        ></iframe>
+
+
+                        <div class="player-platform">
+                            SPOTIFY
+                        </div>
+
+                        <iframe
+                            class="spotify-track"
+                            src="https://open.spotify.com/embed/track/1GBLJXqvzyf7iPSYp2yGIO?utm_source=generator&theme=0"
+                            width="100%"
+                            height="80"
+                            frameborder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
                         ></iframe>
 
                     </div>
@@ -3044,14 +3252,7 @@
 
 
         /* =====================================================
-           SOUNDCLOUD ARTWORK LOADER
-           
-           Obtains the actual artwork from SoundCloud oEmbed.
-           This is used both for:
-           
-           - Playlist
-           - Releases
-           - Artist profile cards
+           SOUNDCLOUD OEMBED
         ====================================================== */
 
         async function getSoundCloudData(
@@ -3095,16 +3296,16 @@
 
 
         /* =====================================================
-           RELEASE ARTWORK
+           RELEASE ARTWORK + REAL TITLES
         ====================================================== */
 
-        const artworkElements =
+        const releaseElements =
             document.querySelectorAll(
-                "[data-soundcloud]"
+                ".release-row[data-soundcloud]"
             );
 
 
-        async function loadArtwork(
+        async function loadReleaseData(
             element
         ) {
 
@@ -3118,17 +3319,141 @@
                 );
 
 
-            /*
-             * Artist cards are handled separately below.
-             */
+            const container =
+                element.querySelector(
+                    "[data-artwork-container]"
+                );
 
-            if (!image) {
+
+            const titleElement =
+                element.querySelector(
+                    ".release-title"
+                );
+
+
+            try {
+
+                const data =
+                    await getSoundCloudData(
+                        url
+                    );
+
+
+                /* ---------------------------------------------
+                   ARTWORK
+                --------------------------------------------- */
+
+                if (
+                    data &&
+                    data.thumbnail_url &&
+                    image &&
+                    container
+                ) {
+
+                    image.onload =
+                        () => {
+
+                            container.classList.add(
+                                "loaded"
+                            );
+
+                        };
+
+
+                    image.onerror =
+                        () => {
+
+                            container.classList.remove(
+                                "loaded"
+                            );
+
+                        };
+
+
+                    image.src =
+                        data.thumbnail_url;
+
+                }
+
+
+                /* ---------------------------------------------
+                   REAL SOUNDCLOUD TITLE
+                   
+                   This replaces URL slugs such as:
+                   hnclosetou
+                   with the actual track title.
+                --------------------------------------------- */
+
+                if (
+                    data &&
+                    data.title &&
+                    titleElement
+                ) {
+
+                    titleElement.textContent =
+                        data.title;
+
+                }
+
+            } catch (error) {
+
+                console.warn(
+                    "SoundCloud data unavailable:",
+                    url
+                );
+
+            }
+
+        }
+
+
+        releaseElements.forEach(
+            (element, index) => {
+
+                setTimeout(
+                    () => {
+
+                        loadReleaseData(
+                            element
+                        );
+
+                    },
+                    index * 120
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           FEATURED PLAYLIST ARTWORK
+        ====================================================== */
+
+        const playlistFeature =
+            document.querySelector(
+                ".playlist-feature[data-soundcloud]"
+            );
+
+
+        async function loadPlaylistArtwork() {
+
+            if (!playlistFeature) {
                 return;
             }
 
 
+            const url =
+                playlistFeature.dataset.soundcloud;
+
+
+            const image =
+                playlistFeature.querySelector(
+                    "[data-artwork]"
+                );
+
+
             const container =
-                element.querySelector(
+                playlistFeature.querySelector(
                     "[data-artwork-container]"
                 );
 
@@ -3143,7 +3468,9 @@
 
                 if (
                     data &&
-                    data.thumbnail_url
+                    data.thumbnail_url &&
+                    image &&
+                    container
                 ) {
 
                     image.onload =
@@ -3174,8 +3501,7 @@
             } catch (error) {
 
                 console.warn(
-                    "Artwork unavailable:",
-                    url
+                    "Playlist artwork unavailable"
                 );
 
             }
@@ -3183,35 +3509,7 @@
         }
 
 
-        artworkElements.forEach(
-            (element, index) => {
-
-                /*
-                 * Only elements containing
-                 * data-artwork belong here.
-                 */
-
-                if (
-                    element.querySelector(
-                        "[data-artwork]"
-                    )
-                ) {
-
-                    setTimeout(
-                        () => {
-
-                            loadArtwork(
-                                element
-                            );
-
-                        },
-                        index * 100
-                    );
-
-                }
-
-            }
-        );
+        loadPlaylistArtwork();
 
 
         /* =====================================================
