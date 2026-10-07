@@ -70,14 +70,18 @@
 
             z-index: -5;
 
+            /*
+             * Fondo más visible:
+             * sin blur y con brillo prácticamente natural.
+             */
             filter:
-                blur(35px)
-                brightness(0.25)
-                saturate(1.15);
+                blur(0px)
+                brightness(0.88)
+                saturate(1.12);
 
-            transform: scale(1.08);
+            transform: scale(1.01);
 
-            opacity: 0.9;
+            opacity: 1;
 
             pointer-events: none;
         }
@@ -88,12 +92,12 @@
 
             z-index: -4;
 
+            /*
+             * Capa muy ligera para que el texto
+             * siga siendo legible sin esconder el video.
+             */
             background:
-                radial-gradient(
-                    circle at center,
-                    rgba(0, 0, 0, 0.25),
-                    rgba(0, 0, 0, 0.78)
-                );
+                rgba(0, 0, 0, 0.16);
 
             pointer-events: none;
         }
@@ -263,7 +267,7 @@
             text-transform: uppercase;
 
             color:
-                rgba(255, 255, 255, 0.62);
+                rgba(255, 255, 255, 0.72);
         }
 
         .hero-button {
@@ -333,7 +337,7 @@
             letter-spacing: 0.18em;
 
             color:
-                rgba(255, 255, 255, 0.38);
+                rgba(255, 255, 255, 0.5);
 
             margin-bottom: 10px;
         }
@@ -359,7 +363,7 @@
             line-height: 1.8;
 
             color:
-                rgba(255, 255, 255, 0.5);
+                rgba(255, 255, 255, 0.62);
 
             text-align: right;
         }
@@ -525,7 +529,7 @@
             letter-spacing: 0.18em;
 
             color:
-                rgba(255, 255, 255, 0.42);
+                rgba(255, 255, 255, 0.48);
 
             text-transform: uppercase;
         }
@@ -1699,7 +1703,7 @@
 
             <div
                 class="playlist-feature"
-                data-soundcloud="https://on.soundcloud.com/OWkcqLcWauVZQnt8jo"
+                data-soundcloud="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files?si=c979200ffe64437392dc3ecb1f54e0cf&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
             >
 
                 <div
@@ -1739,7 +1743,7 @@
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fon.soundcloud.com%2FOWkcqLcWauVZQnt8jo&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fchiefkidmusic%2Fsets%2Fchiefkid-files%3Fsi%3Dc979200ffe64437392dc3ecb1f54e0cf%26utm_source%3Dclipboard%26utm_medium%3Dtext%26utm_campaign%3Dsocial_sharing&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
                     ></iframe>
 
 
@@ -2265,7 +2269,6 @@
                     </div>
 
                 </article>
-
 
             </div>
 
