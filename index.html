@@ -1,1 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIEFKID COLLECTIVE</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            background: #080808;
+            overflow-x: hidden;
+        }
+
+        /* =========================================================
+           BACKGROUND VIDEO
+        ========================================================= */
+
+        .background-video {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        .background-overlay {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.28);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           CONTENEDOR PRINCIPAL
+        ========================================================= */
+
+        .site {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 42px;
+            background: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            z-index: 10;
+        }
+
+        .header-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .header-logo img {
+            display: block;
+            width: auto;
+            height: 21px;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 7px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.45;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 72px;
+            padding-bottom: 48px;
+        }
+
+        .logo-container {
+            width: min(75vw, 700px);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .main-logo {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .collective {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 7px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           SOUNDCLOUD
+        ========================================================= */
+
+        .soundcloud-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 32px;
+        }
+
+        .soundcloud-player {
+            width: 290px;
+            height: 92px;
+            background: #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           TITULOS
+        ========================================================= */
+
+        .section-title {
+            text-align: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* =========================================================
+           ARTISTAS
+        ========================================================= */
+
+        .artists {
+            width: calc(100% - 65px);
+            max-width: 920px;
+            margin: 0 auto 21px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px 16px;
+        }
+
+        .artist {
+            aspect-ratio: 1 / 1;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .artist:hover {
+            transform: scale(1.025);
+            opacity: 0.85;
+        }
+
+        /* =========================================================
+           STEMS / REMIXES
+        ========================================================= */
+
+        .stems {
+            width: calc(100% - 65px);
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .remixes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 110px;
+            margin-top: 5px;
+        }
+
+        .remix {
+            height: 34px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .remix:hover {
+            opacity: 0.75;
+        }
+
+        /* =========================================================
+           CONTACTO
+        ========================================================= */
+
+        .contact {
+            width: calc(100% - 72px);
+            max-width: 920px;
+            margin: 42px auto 0;
+        }
+
+        .contact-title {
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        footer {
+            height: 120px;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+            header {
+                height: 42px;
+                padding: 0 10px;
+            }
+
+            .header-logo img {
+                height: 19px;
+            }
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 6px;
+            }
+
+            .hero {
+                padding-top: 55px;
+                padding-bottom: 40px;
+            }
+
+            .logo-container {
+                width: 78vw;
+            }
+
+            .collective {
+                font-size: 10px;
+                margin-top: 6px;
+            }
+
+            .artists {
+                width: calc(100% - 35px);
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stems {
+                width: calc(100% - 35px);
+            }
+
+            .remixes {
+                gap: 15px;
+            }
+
+            .contact {
+                width: calc(100% - 40px);
+            }
+        }
+
+        @media (max-width: 420px) {
+            nav {
+                gap: 9px;
+            }
+
+            nav a {
+                font-size: 5px;
+            }
+
+            .header-logo img {
+                height: 17px;
+            }
+
+            .logo-container {
+                width: 82vw;
+            }
+
+            .soundcloud-player {
+                width: 65%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- VIDEO DE FONDO -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <div class="background-overlay"></div>
+
+    <main class="site">
+
+        <!-- HEADER -->
+        <header>
+
+            <div class="header-logo">
+                <img src="isologo negro.png" alt="CHIEFKID">
+            </div>
+
+            <nav>
+                <a href="#release">Release</a>
+                <a href="#artists">Artists</a>
+                <a href="#stems">Stems</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="logo-container">
+
+                <img
+                    class="main-logo"
+                    src="logo blanco.png"
+                    alt="CHIEFKID"
+                >
+
+                <div class="collective">
+                    Collective
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SOUNDCLOUD -->
+        <section id="release" class="soundcloud-section">
+
+            <div class="soundcloud-player">
+                Reproductor SoundCloud
+            </div>
+
+        </section>
+
+        <!-- ARTISTAS -->
+        <section id="artists">
+
+            <h2 class="section-title">
+                Artistas
+            </h2>
+
+            <div class="artists">
+
+                <div class="artist">ARTIST 01</div>
+                <div class="artist">ARTIST 02</div>
+                <div class="artist">ARTIST 03</div>
+                <div class="artist">ARTIST 04</div>
+                <div class="artist">ARTIST 05</div>
+
+                <div class="artist">ARTIST 06</div>
+                <div class="artist">ARTIST 07</div>
+                <div class="artist">ARTIST 08</div>
+                <div class="artist">ARTIST 09</div>
+                <div class="artist">ARTIST 10</div>
+
+            </div>
+
+        </section>
+
+        <!-- STEMS / REMIXES -->
+        <section id="stems" class="stems">
+
+            <h2 class="section-title">
+                Stems Remixes
+            </h2>
+
+            <div class="remixes">
+
+                <div class="remix">
+                    Remix 1
+                </div>
+
+                <div class="remix">
+                    Remix 2
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contact" class="contact">
+
+            <h2 class="contact-title">
+                Contacto Submission
+            </h2>
+
+        </section>
+
+        <footer></footer>
+
+    </main>
+
+</body>
+</html>
