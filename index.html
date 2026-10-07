@@ -439,10 +439,6 @@
             width: 100%;
             height: 100%;
 
-            /*
-             * CONTAIN = muestra toda la portada
-             * sin recortarla.
-             */
             object-fit: contain;
 
             object-position: center;
@@ -555,30 +551,38 @@
             width: 100%;
 
             border: none;
+
+            overflow: hidden;
         }
 
         .playlist-player .soundcloud-player {
             height: 130px;
         }
 
+        /*
+         * SPOTIFY PLAYLIST
+         * 152px evita el corte interno
+         * del reproductor y elimina
+         * la necesidad de hacer scroll.
+         */
         .playlist-player .spotify-player {
-            height: 110px;
+            width: 100%;
+
+            height: 152px;
+            min-height: 152px;
 
             margin-top: 8px;
+
+            display: block;
+
+            border: none;
+
+            overflow: hidden;
         }
 
 
         /* =========================================================
            INDIVIDUAL RELEASES
-
-           ARTE:
-           - SIEMPRE CUADRADO
-           - SIN RECORTE
-           - SIN ZOOM
-
-           PLAYERS:
-           - AL LADO DEL ARTE
-           - BLOQUE HORIZONTAL
         ========================================================= */
 
         .release-list {
@@ -592,10 +596,6 @@
         .release-row {
             display: grid;
 
-            /*
-             * 30% = artwork
-             * 70% = reproductores
-             */
             grid-template-columns:
                 minmax(300px, 30%)
                 minmax(0, 70%);
@@ -642,10 +642,6 @@
 
             width: 100%;
 
-            /*
-             * OBLIGATORIO:
-             * el contenedor siempre es cuadrado.
-             */
             aspect-ratio: 1 / 1;
 
             height: auto;
@@ -669,9 +665,9 @@
             height: 100%;
 
             /*
-             * IMPORTANTE:
-             * contain evita completamente
-             * el corte de la portada.
+             * CONTAIN:
+             * muestra toda la portada.
+             * Nunca la recorta.
              */
             object-fit: contain;
 
@@ -679,9 +675,6 @@
 
             opacity: 0;
 
-            /*
-             * Sin zoom.
-             */
             transform: none;
 
             transition:
@@ -692,9 +685,6 @@
             opacity: 1;
         }
 
-        /*
-         * Sin zoom al pasar el mouse.
-         */
         .release-row:hover
         .release-artwork img {
             transform: none;
@@ -828,14 +818,44 @@
             width: 100%;
 
             border: none;
+
+            overflow: hidden;
         }
 
+        /*
+         * SOUNDCLOUD
+         */
         .soundcloud-player {
             height: 110px;
+            min-height: 110px;
         }
 
+        /*
+         * SPOTIFY TRACK
+         *
+         * 80px es la altura compacta
+         * correcta para que Play sea visible.
+         */
         .spotify-track {
-            height: 60px;
+            width: 100%;
+
+            height: 80px;
+            min-height: 80px;
+
+            display: block;
+
+            border: none;
+
+            overflow: hidden;
+        }
+
+        /*
+         * BOOSTED usa un ALBUM de Spotify,
+         * por lo que necesita más altura.
+         */
+        .spotify-track.spotify-album {
+            height: 152px;
+            min-height: 152px;
         }
 
 
@@ -1406,6 +1426,11 @@
                 padding: 30px;
             }
 
+            .playlist-player .spotify-player {
+                height: 152px;
+                min-height: 152px;
+            }
+
 
             /* RELEASES */
 
@@ -1440,10 +1465,17 @@
 
             .soundcloud-player {
                 height: 110px;
+                min-height: 110px;
             }
 
             .spotify-track {
-                height: 60px;
+                height: 80px;
+                min-height: 80px;
+            }
+
+            .spotify-track.spotify-album {
+                height: 152px;
+                min-height: 152px;
             }
 
 
@@ -1532,10 +1564,17 @@
 
             .soundcloud-player {
                 height: 110px;
+                min-height: 110px;
             }
 
             .spotify-track {
-                height: 60px;
+                height: 80px;
+                min-height: 80px;
+            }
+
+            .spotify-track.spotify-album {
+                height: 152px;
+                min-height: 152px;
             }
 
         }
@@ -1735,7 +1774,7 @@
                         class="spotify-player"
                         src="https://open.spotify.com/embed/playlist/08BW3y8BNWCbW0GZbvQQh9?utm_source=generator&theme=0"
                         width="100%"
-                        height="110"
+                        height="152"
                         frameborder="0"
                         allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -1813,7 +1852,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/0UVMMgmYnU4UdcmWAMkiyO?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -1884,7 +1923,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/1pqQgMmSI9cDfNAbn3r0Hx?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -1955,7 +1994,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/3G9G6eENhmKqJ3RN41sgWS?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -2026,7 +2065,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/5rfi0u9psRedy2pB0SPFTT?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -2097,7 +2136,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/2JRC3tVHcO8uyYiAIVQOuZ?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -2165,10 +2204,10 @@
                         </div>
 
                         <iframe
-                            class="spotify-track"
+                            class="spotify-track spotify-album"
                             src="https://open.spotify.com/embed/album/4OOtxOtCmYI8lNdbMeXOZt?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="152"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -2239,7 +2278,7 @@
                             class="spotify-track"
                             src="https://open.spotify.com/embed/track/1GBLJXqvzyf7iPSYp2yGIO?utm_source=generator&theme=0"
                             width="100%"
-                            height="60"
+                            height="80"
                             frameborder="0"
                             allowfullscreen=""
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -3169,7 +3208,7 @@
 
         /* =====================================================
            BACKGROUND VIDEO
-        ====================================================== */
+        ========================================================== */
 
         const backgroundVideo =
             document.querySelector(
