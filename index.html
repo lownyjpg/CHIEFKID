@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CHIEFKID COLLECTIVE</title>
 
     <meta
         name="description"
-        content="CHIEFKID COLLECTIVE — Independent electronic music collective."
+        content="CHIEFKID COLLECTIVE — Independent music collective featuring artists, releases, stems, remixes and original electronic music."
     >
+
+    <link rel="icon" type="image/png" href="isologo negro.png">
 
     <style>
 
@@ -32,7 +33,10 @@
         body {
             background: #050505;
             color: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
             overflow-x: hidden;
         }
 
@@ -48,21 +52,24 @@
 
         .background-video {
             position: fixed;
-            inset: -70px;
+            inset: 0;
 
-            width: calc(100% + 140px);
-            height: calc(100% + 140px);
+            width: 100%;
+            height: 100%;
 
             object-fit: cover;
 
+            z-index: -5;
+
             filter:
-                blur(40px)
-                brightness(0.42)
+                blur(35px)
+                brightness(0.25)
                 saturate(1.15);
 
             transform: scale(1.08);
 
-            z-index: -5;
+            opacity: 0.9;
+
             pointer-events: none;
         }
 
@@ -70,15 +77,15 @@
             position: fixed;
             inset: 0;
 
+            z-index: -4;
+
             background:
-                linear-gradient(
-                    180deg,
-                    rgba(0,0,0,0.30) 0%,
-                    rgba(0,0,0,0.48) 45%,
-                    rgba(0,0,0,0.78) 100%
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 0, 0, 0.25),
+                    rgba(0, 0, 0, 0.78)
                 );
 
-            z-index: -4;
             pointer-events: none;
         }
 
@@ -92,97 +99,104 @@
 
             top: 0;
             left: 0;
+            right: 0;
 
-            width: 100%;
-            height: 68px;
+            height: 88px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 32px;
-
-            background: rgba(0,0,0,0.08);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.08);
-
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            padding: 0 5vw;
 
             z-index: 1000;
 
+            background:
+                rgba(5, 5, 5, 0.45);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.06);
+
             transition:
                 height 0.35s ease,
-                background 0.35s ease,
-                backdrop-filter 0.35s ease,
-                padding 0.35s ease;
+                background 0.35s ease;
         }
 
         header.scrolled {
-            height: 42px;
-
-            padding: 0 24px;
+            height: 68px;
 
             background:
-                rgba(255,255,255,0.92);
-
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+                rgba(5, 5, 5, 0.78);
         }
 
         .header-logo {
-            height: 100%;
-
             display: flex;
             align-items: center;
         }
 
         .header-logo img {
-            width: auto;
-            height: 27px;
+            width: 42px;
+            height: 42px;
 
             object-fit: contain;
 
-            transition: height 0.35s ease;
+            transition:
+                width 0.3s ease,
+                height 0.3s ease;
         }
 
         header.scrolled .header-logo img {
-            height: 19px;
+            width: 34px;
+            height: 34px;
         }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
 
         nav {
             display: flex;
             align-items: center;
 
-            gap: 34px;
+            gap: 32px;
         }
 
         nav a {
-            font-size: 9px;
-            font-weight: 900;
+            position: relative;
 
-            text-transform: uppercase;
-            letter-spacing: 0.7px;
+            font-size: 11px;
+            font-weight: 700;
 
-            color: #ffffff;
+            letter-spacing: 0.16em;
+
+            color: rgba(255, 255, 255, 0.72);
 
             transition:
-                color 0.25s ease,
-                opacity 0.25s ease;
+                color 0.25s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 1px;
+
+            background: #ffffff;
+
+            transition:
+                width 0.25s ease;
         }
 
         nav a:hover {
-            opacity: 0.45;
+            color: #ffffff;
         }
 
-        header.scrolled nav a {
-            color: #000000;
+        nav a:hover::after {
+            width: 100%;
         }
 
 
@@ -196,70 +210,80 @@
             display: flex;
             flex-direction: column;
 
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding:
+                140px 5vw
+                100px;
+        }
+
+        .hero-logo {
+            width: min(650px, 82vw);
+
+            max-height: 220px;
+
+            object-fit: contain;
+
+            margin-bottom: 30px;
+
+            filter:
+                drop-shadow(
+                    0 20px 50px
+                    rgba(0, 0, 0, 0.5)
+                );
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            font-size: 13px;
+            line-height: 1.8;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+
+            color:
+                rgba(255, 255, 255, 0.62);
+        }
+
+        .hero-button {
+            margin-top: 40px;
+
+            display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
-            padding:
-                110px 30px
-                80px;
-        }
+            min-width: 180px;
 
-        .hero-content {
-            width: min(850px, 88vw);
+            padding: 15px 24px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.25);
 
-        .main-logo {
-            width: 100%;
-            height: auto;
-
-            display: block;
-        }
-
-        .hero-subtitle {
-            width: 100%;
-
-            display: flex;
-            justify-content: flex-end;
-
-            margin-top: 10px;
-
-            font-size: 15px;
-            font-weight: 900;
-
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero-line {
-            width: 100%;
-
-            margin-top: 28px;
-
-            height: 1px;
-
-            background:
-                rgba(255,255,255,0.30);
-        }
-
-        .hero-description {
-            width: 100%;
-
-            margin-top: 18px;
-
-            display: flex;
-            justify-content: space-between;
-
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 700;
 
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.18em;
 
-            opacity: 0.7;
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .hero-button:hover {
+            background: #ffffff;
+            color: #000000;
+
+            border-color: #ffffff;
+
+            transform: translateY(-3px);
         }
 
 
@@ -268,357 +292,166 @@
         ========================================================= */
 
         section {
+            position: relative;
+
             width: 100%;
-        }
-
-        .section {
-            width: min(1180px, calc(100% - 70px));
-
-            margin: 0 auto;
 
             padding:
-                110px 0;
+                120px 5vw;
         }
 
         .section-header {
             display: flex;
+
             align-items: flex-end;
             justify-content: space-between;
 
-            margin-bottom: 35px;
+            gap: 30px;
 
-            border-bottom:
-                1px solid rgba(255,255,255,0.25);
-
-            padding-bottom: 13px;
+            margin-bottom: 50px;
         }
 
         .section-number {
-            font-size: 9px;
-            font-weight: 900;
+            font-size: 10px;
 
-            letter-spacing: 1px;
+            letter-spacing: 0.18em;
 
-            opacity: 0.5;
+            color:
+                rgba(255, 255, 255, 0.38);
+
+            margin-bottom: 10px;
         }
 
         .section-title {
-            font-size: clamp(26px, 4vw, 48px);
+            font-size: clamp(34px, 6vw, 82px);
 
-            font-weight: 900;
+            line-height: 0.95;
 
-            text-transform: uppercase;
+            font-weight: 800;
 
-            letter-spacing: -1.5px;
-        }
-
-
-        /* =========================================================
-           MUSIC / RELEASES
-        ========================================================= */
-
-        .playlist-feature {
-            width: 100%;
-
-            background:
-                rgba(0,0,0,0.72);
-
-            border:
-                1px solid rgba(255,255,255,0.14);
-
-            overflow: hidden;
-
-            margin-bottom: 55px;
-
-            transition:
-                border-color 0.35s ease;
-        }
-
-        .playlist-feature:hover {
-            border-color:
-                rgba(255,255,255,0.28);
-        }
-
-        .playlist-header {
-            padding:
-                28px 30px 22px;
-
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .playlist-label {
-            font-size: 8px;
-            font-weight: 900;
-
-            letter-spacing: 1.7px;
+            letter-spacing: -0.055em;
 
             text-transform: uppercase;
-
-            opacity: 0.5;
-
-            margin-bottom: 8px;
         }
 
-        .playlist-title {
-            font-size:
-                clamp(30px, 5vw, 58px);
+        .section-description {
+            max-width: 390px;
 
-            line-height: 0.9;
+            font-size: 12px;
 
-            font-weight: 900;
+            line-height: 1.8;
 
-            text-transform: uppercase;
-
-            letter-spacing: -2px;
-        }
-
-        .playlist-description {
-            max-width: 330px;
-
-            font-size: 8px;
-            font-weight: 700;
-
-            line-height: 1.6;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.8px;
-
-            opacity: 0.48;
+            color:
+                rgba(255, 255, 255, 0.5);
 
             text-align: right;
         }
 
-        .playlist-player {
+
+        /* =========================================================
+           RELEASES
+        ========================================================= */
+
+        .release-feature {
             width: 100%;
 
-            padding:
-                0 18px 18px;
+            max-width: 1300px;
+
+            margin: 0 auto 60px;
         }
 
-        .playlist-player iframe {
+        .release-player {
+            width: 100%;
+
+            overflow: hidden;
+
+            background:
+                rgba(0, 0, 0, 0.35);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0, 0, 0, 0.45);
+        }
+
+        .release-player iframe {
             display: block;
 
             width: 100%;
 
-            height: 450px;
-
-            border: 0;
+            border: none;
         }
 
-        .playlist-footer {
-            padding:
-                0 30px 25px;
+        .release-note {
+            margin-top: 18px;
 
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
-        }
-
-        .playlist-meta {
-            font-size: 8px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            opacity: 0.42;
-        }
-
-        .playlist-link {
-            font-size: 8px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            opacity: 0.7;
-
-            transition:
-                opacity 0.25s ease;
-        }
-
-        .playlist-link:hover {
-            opacity: 0.35;
-        }
-
-
-        /* =========================================================
-           FEATURED TRACKS
-        ========================================================= */
-
-        .featured-heading {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            margin-bottom: 22px;
-        }
-
-        .featured-title {
-            font-size: 10px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.5px;
-        }
-
-        .featured-count {
-            font-size: 8px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            opacity: 0.4;
-        }
-
-        .releases-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-        .release-card {
-            background:
-                rgba(0,0,0,0.70);
-
-            border:
-                1px solid rgba(255,255,255,0.12);
-
-            overflow: hidden;
-
-            transition:
-                transform 0.35s ease,
-                border-color 0.35s ease;
-        }
-
-        .release-card:hover {
-            transform: translateY(-4px);
-
-            border-color:
-                rgba(255,255,255,0.30);
-        }
-
-        .release-card-header {
-            padding:
-                20px 22px 15px;
-
-            display: flex;
-            align-items: flex-start;
             justify-content: space-between;
 
             gap: 20px;
         }
 
-        .release-label {
-            font-size: 8px;
-            font-weight: 900;
+        .release-note strong {
+            font-size: 12px;
 
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-
-            opacity: 0.50;
-
-            margin-bottom: 7px;
-        }
-
-        .release-title {
-            font-size: 22px;
-            font-weight: 900;
+            letter-spacing: 0.14em;
 
             text-transform: uppercase;
-
-            line-height: 1;
         }
 
-        .release-artist {
-            margin-top: 6px;
+        .release-note span {
+            font-size: 10px;
 
-            font-size: 9px;
-            font-weight: 700;
+            letter-spacing: 0.12em;
+
+            color:
+                rgba(255, 255, 255, 0.4);
 
             text-transform: uppercase;
-
-            letter-spacing: 0.8px;
-
-            opacity: 0.55;
         }
 
-        .release-number {
-            font-size: 8px;
-            font-weight: 900;
+        .release-grid {
+            display: grid;
 
-            opacity: 0.35;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
 
-            white-space: nowrap;
+            gap: 25px;
         }
 
-        .soundcloud-wrapper {
-            width: 100%;
+        .release-card {
+            background:
+                rgba(0, 0, 0, 0.4);
 
-            padding:
-                0 15px 15px;
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
         }
 
-        .soundcloud-wrapper iframe {
+        .release-card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(255, 255, 255, 0.2);
+        }
+
+        .release-card iframe {
             display: block;
 
             width: 100%;
 
-            height: 450px;
-
-            border: 0;
-        }
-
-        .release-footer {
-            padding:
-                0 22px 20px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .release-genre {
-            font-size: 8px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            opacity: 0.45;
-        }
-
-        .release-link {
-            font-size: 8px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            opacity: 0.7;
-
-            transition:
-                opacity 0.25s ease;
-        }
-
-        .release-link:hover {
-            opacity: 0.35;
+            border: none;
         }
 
 
@@ -626,86 +459,226 @@
            ARTISTS
         ========================================================= */
 
+        #artists {
+            background:
+                rgba(0, 0, 0, 0.15);
+        }
+
         .artists-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(4, minmax(0, 1fr));
 
-            gap: 16px;
+            gap: 18px;
         }
 
         .artist-card {
             position: relative;
 
+            display: block;
+
+            min-width: 0;
+
             aspect-ratio: 1 / 1;
 
             overflow: hidden;
 
-            background: #111;
+            background:
+                #111111;
 
-            cursor: pointer;
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            isolation: isolate;
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease;
         }
 
-        .artist-card img {
+        .artist-card:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(255, 255, 255, 0.28);
+        }
+
+        .artist-image {
+            position: absolute;
+
+            inset: 0;
+
             width: 100%;
             height: 100%;
 
             object-fit: cover;
 
-            display: block;
+            opacity: 0;
 
-            filter:
-                grayscale(15%)
-                brightness(0.65);
+            transform: scale(1.01);
 
             transition:
-                transform 0.55s ease,
-                filter 0.55s ease;
+                opacity 0.5s ease,
+                transform 0.6s ease,
+                filter 0.5s ease;
         }
 
-        .artist-card:hover img {
-            transform: scale(1.07);
+        .artist-card.loaded .artist-image {
+            opacity: 1;
+        }
+
+        .artist-card:hover .artist-image {
+            transform: scale(1.06);
 
             filter:
-                grayscale(0%)
-                brightness(0.95);
+                brightness(0.72);
         }
 
-        .artist-info {
+        .artist-fallback {
             position: absolute;
 
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
 
-            padding: 45px 20px 18px;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 30% 20%,
+                    rgba(255, 255, 255, 0.15),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #050505
+                );
+
+            color:
+                rgba(255, 255, 255, 0.8);
+
+            font-size: clamp(30px, 4vw, 55px);
+
+            font-weight: 900;
+
+            letter-spacing: -0.06em;
+
+            z-index: -1;
+        }
+
+        .artist-card.loaded .artist-fallback {
+            opacity: 0;
+        }
+
+        .artist-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            padding: 22px;
 
             background:
                 linear-gradient(
-                    transparent,
-                    rgba(0,0,0,0.90)
+                    to top,
+                    rgba(0, 0, 0, 0.92),
+                    rgba(0, 0, 0, 0.18) 55%,
+                    transparent 75%
                 );
+
+            z-index: 3;
+        }
+
+        .artist-index {
+            position: absolute;
+
+            top: 18px;
+            left: 20px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+
+            color:
+                rgba(255, 255, 255, 0.55);
         }
 
         .artist-name {
             font-size: 18px;
-            font-weight: 900;
+
+            font-weight: 800;
+
+            letter-spacing: -0.03em;
 
             text-transform: uppercase;
+
+            word-break: break-word;
         }
 
-        .artist-type {
-            margin-top: 5px;
+        .artist-link {
+            margin-top: 7px;
 
-            font-size: 8px;
-            font-weight: 700;
+            font-size: 9px;
+
+            letter-spacing: 0.14em;
 
             text-transform: uppercase;
 
-            letter-spacing: 1px;
+            color:
+                rgba(255, 255, 255, 0.48);
+        }
 
-            opacity: 0.6;
+        .artist-loading {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 18px;
+            height: 18px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            border-top-color:
+                rgba(255, 255, 255, 0.8);
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+
+            z-index: 2;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+        .artist-card.loaded .artist-loading {
+            opacity: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(360deg);
+            }
         }
 
 
@@ -713,181 +686,157 @@
            STEMS / REMIXES
         ========================================================= */
 
-        .remix-grid {
+        .stems-container {
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                1fr 1fr;
 
-            gap: 18px;
+            gap: 25px;
         }
 
-        .remix-card {
-            position: relative;
+        .stems-box {
+            min-height: 300px;
 
-            min-height: 270px;
-
-            overflow: hidden;
-
-            background: #111;
-        }
-
-        .remix-card img {
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            filter:
-                brightness(0.48)
-                saturate(1.15);
-
-            transition:
-                transform 0.55s ease,
-                filter 0.55s ease;
-        }
-
-        .remix-card:hover img {
-            transform: scale(1.06);
-
-            filter:
-                brightness(0.65)
-                saturate(1.3);
-        }
-
-        .remix-content {
-            position: absolute;
-
-            inset: 0;
+            padding: 45px;
 
             display: flex;
+
             flex-direction: column;
 
-            justify-content: flex-end;
+            justify-content: space-between;
 
-            padding: 28px;
-        }
-
-        .remix-tag {
-            font-size: 8px;
-            font-weight: 900;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-
-            opacity: 0.65;
-
-            margin-bottom: 8px;
-        }
-
-        .remix-title {
-            font-size: 25px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-        }
-
-        .remix-button {
-            width: fit-content;
-
-            margin-top: 17px;
-
-            padding:
-                9px 14px;
+            background:
+                rgba(0, 0, 0, 0.45);
 
             border:
-                1px solid rgba(255,255,255,0.5);
+                1px solid
+                rgba(255, 255, 255, 0.08);
+        }
 
-            font-size: 8px;
-            font-weight: 900;
+        .stems-box h3 {
+            font-size: 30px;
+
+            letter-spacing: -0.04em;
+
+            text-transform: uppercase;
+        }
+
+        .stems-box p {
+            max-width: 430px;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            color:
+                rgba(255, 255, 255, 0.52);
+        }
+
+        .stems-button {
+            align-self: flex-start;
+
+            margin-top: 30px;
+
+            padding: 13px 20px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.2);
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.15em;
 
             text-transform: uppercase;
 
             transition:
-                background 0.25s ease,
-                color 0.25s ease;
+                all 0.25s ease;
         }
 
-        .remix-button:hover {
+        .stems-button:hover {
             background: #ffffff;
+
             color: #000000;
+
+            border-color: #ffffff;
         }
 
 
         /* =========================================================
-           SUBMISSION
+           CONTACT
         ========================================================= */
 
-        .submission {
-            min-height: 550px;
+        .contact-section {
+            min-height: 65vh;
 
             display: flex;
+
             flex-direction: column;
 
             justify-content: center;
-
-            border-top:
-                1px solid rgba(255,255,255,0.2);
         }
 
-        .submission-title {
-            max-width: 900px;
+        .contact-content {
+            display: flex;
 
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 50px;
+        }
+
+        .contact-title {
             font-size:
-                clamp(42px, 8vw, 105px);
+                clamp(50px, 10vw, 150px);
+
+            line-height: 0.82;
 
             font-weight: 900;
 
-            line-height: 0.9;
-
-            letter-spacing: -5px;
+            letter-spacing: -0.07em;
 
             text-transform: uppercase;
         }
 
-        .submission-text {
-            max-width: 620px;
+        .contact-right {
+            max-width: 400px;
+        }
 
-            margin-top: 35px;
+        .contact-right p {
+            font-size: 12px;
 
-            font-size: 11px;
+            line-height: 1.8;
+
+            color:
+                rgba(255, 255, 255, 0.52);
+
+            margin-bottom: 25px;
+        }
+
+        .contact-email {
+            display: inline-block;
+
+            font-size: 14px;
+
             font-weight: 700;
 
-            line-height: 1.7;
-
-            text-transform: uppercase;
-
-            opacity: 0.65;
-        }
-
-        .submission-email {
-            margin-top: 30px;
-
-            width: fit-content;
-
-            font-size:
-                clamp(18px, 3vw, 32px);
-
-            font-weight: 900;
-
-            text-transform: uppercase;
+            letter-spacing: 0.05em;
 
             border-bottom:
-                2px solid #ffffff;
+                1px solid
+                rgba(255, 255, 255, 0.35);
 
-            padding-bottom: 6px;
+            padding-bottom: 7px;
 
             transition:
-                opacity 0.25s ease;
+                border-color 0.25s ease;
         }
 
-        .submission-email:hover {
-            opacity: 0.5;
+        .contact-email:hover {
+            border-color: #ffffff;
         }
 
 
@@ -896,284 +845,188 @@
         ========================================================= */
 
         footer {
-            width: min(1180px, calc(100% - 70px));
-
-            margin: 0 auto;
-
             padding:
-                35px 0 45px;
-
-            border-top:
-                1px solid rgba(255,255,255,0.2);
+                45px 5vw;
 
             display: flex;
+
             align-items: center;
             justify-content: space-between;
+
+            gap: 30px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.07);
+
+            background:
+                rgba(0, 0, 0, 0.45);
         }
 
-        .footer-left {
-            font-size: 9px;
-            font-weight: 900;
+        .footer-logo img {
+            width: 130px;
 
-            text-transform: uppercase;
+            max-height: 40px;
 
-            opacity: 0.5;
+            object-fit: contain;
         }
 
-        .socials {
+        .footer-socials {
             display: flex;
 
-            gap: 25px;
+            gap: 22px;
         }
 
-        .socials a {
+        .footer-socials a {
             font-size: 9px;
-            font-weight: 900;
+
+            font-weight: 700;
+
+            letter-spacing: 0.14em;
+
+            color:
+                rgba(255, 255, 255, 0.5);
 
             text-transform: uppercase;
 
             transition:
-                opacity 0.25s ease;
+                color 0.25s ease;
         }
 
-        .socials a:hover {
-            opacity: 0.45;
+        .footer-socials a:hover {
+            color: #ffffff;
+        }
+
+        .footer-copy {
+            font-size: 8px;
+
+            letter-spacing: 0.12em;
+
+            color:
+                rgba(255, 255, 255, 0.25);
+
+            text-transform: uppercase;
         }
 
 
         /* =========================================================
-           MOBILE
+           RESPONSIVE
         ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .artists-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
 
         @media (max-width: 800px) {
 
             header {
-                height: 58px;
+                height: 72px;
 
-                padding: 0 16px;
-            }
-
-            header.scrolled {
-                height: 38px;
-
-                padding: 0 13px;
-            }
-
-            .header-logo img {
-                height: 23px;
-            }
-
-            header.scrolled .header-logo img {
-                height: 17px;
+                padding:
+                    0 5vw;
             }
 
             nav {
-                gap: 13px;
+                gap: 16px;
             }
 
             nav a {
-                font-size: 6px;
-                letter-spacing: 0.4px;
+                font-size: 9px;
             }
 
             .hero {
-                padding:
-                    100px 20px
-                    65px;
-            }
-
-            .hero-content {
-                width: 90vw;
-            }
-
-            .hero-subtitle {
-                font-size: 11px;
-            }
-
-            .hero-description {
-                font-size: 7px;
-                line-height: 1.5;
-            }
-
-            .section {
-                width: calc(100% - 35px);
-
-                padding:
-                    75px 0;
+                padding-top: 120px;
             }
 
             .section-header {
-                margin-bottom: 22px;
-            }
-
-            .section-title {
-                font-size: 25px;
-            }
-
-            .playlist-header {
-                padding:
-                    22px 18px 18px;
-
                 flex-direction: column;
 
                 align-items: flex-start;
             }
 
-            .playlist-description {
+            .section-description {
                 text-align: left;
-
-                max-width: 100%;
             }
 
-            .playlist-title {
-                font-size: 36px;
-            }
-
-            .playlist-player {
-                padding:
-                    0 10px 10px;
-            }
-
-            .playlist-player iframe {
-                height: 450px;
-            }
-
-            .playlist-footer {
-                padding:
-                    0 18px 20px;
-            }
-
-            .releases-grid {
+            .release-grid {
                 grid-template-columns: 1fr;
-
-                gap: 14px;
-            }
-
-            .release-title {
-                font-size: 19px;
-            }
-
-            .release-card-header {
-                padding:
-                    17px 18px 13px;
-            }
-
-            .release-footer {
-                padding:
-                    0 18px 17px;
-            }
-
-            .soundcloud-wrapper {
-                padding:
-                    0 10px 10px;
-            }
-
-            .soundcloud-wrapper iframe {
-                height: 450px;
             }
 
             .artists-grid {
                 grid-template-columns:
-                    repeat(2, 1fr);
-
-                gap: 10px;
-            }
-
-            .artist-name {
-                font-size: 13px;
-            }
-
-            .artist-type {
-                font-size: 6px;
-            }
-
-            .remix-grid {
-                grid-template-columns: 1fr;
+                    repeat(2, minmax(0, 1fr));
 
                 gap: 12px;
             }
 
-            .remix-card {
-                min-height: 230px;
+            .artist-name {
+                font-size: 14px;
             }
 
-            .remix-title {
-                font-size: 21px;
+            .artist-overlay {
+                padding: 16px;
             }
 
-            .submission {
-                min-height: 430px;
+            .stems-container {
+                grid-template-columns: 1fr;
             }
 
-            .submission-title {
-                font-size: 49px;
-
-                letter-spacing: -2.5px;
-            }
-
-            .submission-text {
-                font-size: 9px;
-            }
-
-            footer {
-                width: calc(100% - 35px);
-
+            .contact-content {
                 flex-direction: column;
 
                 align-items: flex-start;
-
-                gap: 25px;
             }
 
-            .socials {
-                gap: 18px;
+            footer {
+                flex-direction: column;
 
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            nav a:nth-child(3),
+            nav a:nth-child(4) {
+                display: none;
+            }
+
+            .hero-logo {
+                width: 88vw;
+            }
+
+            section {
+                padding:
+                    85px 5vw;
+            }
+
+            .artists-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .artist-card {
+                aspect-ratio: 1 / 1;
+            }
+
+            .stems-box {
+                padding: 30px;
+            }
+
+            .footer-socials {
                 flex-wrap: wrap;
             }
 
         }
 
-
-        /* =========================================================
-           SMALL MOBILE
-        ========================================================= */
-
-        @media (max-width: 430px) {
-
-            nav {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 5px;
-            }
-
-            .hero-subtitle {
-                font-size: 9px;
-            }
-
-            .hero-description {
-                flex-direction: column;
-
-                gap: 6px;
-            }
-
-            .artists-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .artist-name {
-                font-size: 11px;
-            }
-
-            .submission-title {
-                font-size: 42px;
-            }
-
-        }
-
     </style>
-
 </head>
 
 
@@ -1182,7 +1035,7 @@
 
     <!-- =========================================================
          BACKGROUND
-    ========================================================= -->
+    ========================================================== -->
 
     <video
         class="background-video"
@@ -1190,13 +1043,9 @@
         muted
         loop
         playsinline
+        preload="auto"
     >
-
-        <source
-            src="background.mp4"
-            type="video/mp4"
-        >
-
+        <source src="background.mp4" type="video/mp4">
     </video>
 
     <div class="background-overlay"></div>
@@ -1204,39 +1053,37 @@
 
     <!-- =========================================================
          HEADER
-    ========================================================= -->
+    ========================================================== -->
 
-    <header id="mainHeader">
+    <header id="site-header">
 
         <a
             href="#home"
             class="header-logo"
+            aria-label="ChiefKid Collective"
         >
-
             <img
                 src="isologo negro.png"
-                alt="CHIEFKID"
+                alt="ChiefKid Collective"
             >
-
         </a>
-
 
         <nav>
 
-            <a href="#release">
-                Releases
+            <a href="#releases">
+                RELEASES
             </a>
 
             <a href="#artists">
-                Artists
+                ARTISTS
             </a>
 
             <a href="#stems">
-                Stems
+                STEMS
             </a>
 
             <a href="#contact">
-                Contact
+                CONTACT
             </a>
 
         </nav>
@@ -1244,45 +1091,35 @@
     </header>
 
 
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
     <main>
-
-
-        <!-- =====================================================
-             HOME
-        ====================================================== -->
 
         <section
             id="home"
             class="hero"
         >
 
-            <div class="hero-content">
+            <img
+                class="hero-logo"
+                src="logo blanco.png"
+                alt="CHIEFKID COLLECTIVE"
+            >
 
-                <img
-                    class="main-logo"
-                    src="logo blanco.png"
-                    alt="CHIEFKID COLLECTIVE"
-                >
+            <p>
+                Independent music collective focused on
+                electronic music, original releases,
+                collaborations and forward-thinking sounds.
+            </p>
 
-                <div class="hero-subtitle">
-                    Collective
-                </div>
-
-                <div class="hero-line"></div>
-
-                <div class="hero-description">
-
-                    <span>
-                        Independent Electronic Music
-                    </span>
-
-                    <span>
-                        Chile / Worldwide
-                    </span>
-
-                </div>
-
-            </div>
+            <a
+                class="hero-button"
+                href="#releases"
+            >
+                EXPLORE RELEASES
+            </a>
 
         </section>
 
@@ -1291,541 +1128,156 @@
              RELEASES
         ====================================================== -->
 
-        <section
-            id="release"
-            class="section"
-        >
+        <section id="releases">
 
             <div class="section-header">
 
-                <h2 class="section-title">
-                    Releases
-                </h2>
+                <div>
 
-                <span class="section-number">
-                    01 / 04
-                </span>
+                    <div class="section-number">
+                        01 / MUSIC
+                    </div>
+
+                    <h2 class="section-title">
+                        Releases
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Explore the latest music released through
+                    ChiefKid Collective and discover the sounds
+                    of our artists.
+                </p>
 
             </div>
 
 
-            <!-- =================================================
-                 MAIN PLAYLIST
-            ================================================== -->
+            <!-- FEATURED PLAYLIST -->
 
-            <div class="playlist-feature">
+            <div class="release-feature">
 
-                <div class="playlist-header">
-
-                    <div>
-
-                        <div class="playlist-label">
-                            CHIEFKID COLLECTIVE / ARCHIVE
-                        </div>
-
-                        <div class="playlist-title">
-                            ChiefKid Files
-                        </div>
-
-                    </div>
-
-                    <div class="playlist-description">
-
-                        Explore the collective archive,
-                        releases, experiments and sounds
-                        from ChiefKid.
-
-                    </div>
-
-                </div>
-
-
-                <div class="playlist-player">
+                <div class="release-player">
 
                     <iframe
+                        height="450"
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                    >
-                    </iframe>
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sets/chiefkid-files&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
                 </div>
 
+                <div class="release-note">
 
-                <div class="playlist-footer">
+                    <strong>
+                        CHIEFKID FILES
+                    </strong>
 
-                    <span class="playlist-meta">
-                        SoundCloud / ChiefKid Files
+                    <span>
+                        COLLECTIVE PLAYLIST
                     </span>
 
-                    <a
-                        class="playlist-link"
-                        href="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Open Playlist →
-                    </a>
-
                 </div>
 
             </div>
 
 
-            <!-- =================================================
-                 FEATURED
-            ================================================== -->
+            <!-- RELEASE GRID -->
 
-            <div class="featured-heading">
+            <div class="release-grid">
 
-                <div class="featured-title">
-                    Featured Tracks
+
+                <div class="release-card">
+
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sm_lc&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
+
                 </div>
 
-                <div class="featured-count">
-                    07 Tracks
+
+                <div class="release-card">
+
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/oracle&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
+
                 </div>
 
-            </div>
 
+                <div class="release-card">
 
-            <div class="releases-grid">
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/valhalla&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
+                </div>
 
-                <!-- SM_LC -->
 
-                <article class="release-card">
+                <div class="release-card">
 
-                    <div class="release-card-header">
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/hnclosetou&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
-                        <div>
+                </div>
 
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
 
-                            <div class="release-title">
-                                SM_LC
-                            </div>
+                <div class="release-card">
 
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/phantomm&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
-                        </div>
+                </div>
 
-                        <div class="release-number">
-                            001
-                        </div>
 
-                    </div>
+                <div class="release-card">
 
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/boosted&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
-                    <div class="soundcloud-wrapper">
+                </div>
 
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/sm_lc&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
 
-                    </div>
+                <div class="release-card">
 
+                    <iframe
+                        height="450"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/junker&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                    ></iframe>
 
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/sm_lc"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- ORACLE -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                Oracle
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            002
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/oracle&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/oracle"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- VALHALLA -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                Valhalla
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            003
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/valhalla&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/valhalla"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- HN CLOSETOU -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                HN CLOSETOU
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            004
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/hnclosetou&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/hnclosetou"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PHANTOMM -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                Phantomm
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            005
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/phantomm&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/phantomm"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- BOOSTED -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                Boosted
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            006
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/boosted&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/boosted"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- JUNKER -->
-
-                <article class="release-card">
-
-                    <div class="release-card-header">
-
-                        <div>
-
-                            <div class="release-label">
-                                CHIEFKID FILES
-                            </div>
-
-                            <div class="release-title">
-                                Junker
-                            </div>
-
-                            <div class="release-artist">
-                                ChiefKid Music
-                            </div>
-
-                        </div>
-
-                        <div class="release-number">
-                            007
-                        </div>
-
-                    </div>
-
-
-                    <div class="soundcloud-wrapper">
-
-                        <iframe
-                            scrolling="no"
-                            frameborder="no"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/chiefkidmusic/junker&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&visual=true"
-                        >
-                        </iframe>
-
-                    </div>
-
-
-                    <div class="release-footer">
-
-                        <span class="release-genre">
-                            SoundCloud
-                        </span>
-
-                        <a
-                            class="release-link"
-                            href="https://soundcloud.com/chiefkidmusic/junker"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Track →
-                        </a>
-
-                    </div>
-
-                </article>
-
+                </div>
 
             </div>
 
@@ -1836,195 +1288,809 @@
              ARTISTS
         ====================================================== -->
 
-        <section
-            id="artists"
-            class="section"
-        >
+        <section id="artists">
 
             <div class="section-header">
 
-                <h2 class="section-title">
-                    Artists
-                </h2>
+                <div>
 
-                <span class="section-number">
-                    02 / 04
-                </span>
+                    <div class="section-number">
+                        02 / COLLECTIVE
+                    </div>
+
+                    <h2 class="section-title">
+                        Artists
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Meet the artists and producers behind
+                    ChiefKid Collective.
+                </p>
 
             </div>
 
 
-            <div class="artists-grid">
+            <div
+                id="artists-grid"
+                class="artists-grid"
+            >
 
 
-                <!-- LONELY FUN -->
+                <!-- 01 -->
 
                 <a
                     class="artist-card"
                     href="https://soundcloud.com/lonelyfunmusic"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/lonelyfunmusic"
+                    data-name="Lonely Fun"
                 >
 
+                    <div class="artist-fallback">
+                        LF
+                    </div>
+
+                    <div class="artist-loading"></div>
+
                     <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
+                        class="artist-image"
                         alt="Lonely Fun"
                     >
 
-                    <div class="artist-info">
+                    <div class="artist-overlay">
 
-                        <div class="artist-name">
+                        <span class="artist-index">
+                            01
+                        </span>
+
+                        <span class="artist-name">
                             Lonely Fun
-                        </div>
+                        </span>
 
-                        <div class="artist-type">
-                            Hybrid Trap / Bass
-                        </div>
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
 
                     </div>
 
                 </a>
 
 
-                <!-- MARINHO -->
+                <!-- 02 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/sotw808"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/sotw808"
+                    data-name="Sotw808"
+                >
+
+                    <div class="artist-fallback">
+                        S8
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Sotw808"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            02
+                        </span>
+
+                        <span class="artist-name">
+                            Sotw808
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 03 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/cellariumusic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/cellariumusic"
+                    data-name="Cellarium"
+                >
+
+                    <div class="artist-fallback">
+                        C
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Cellarium"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            03
+                        </span>
+
+                        <span class="artist-name">
+                            Cellarium
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 04 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/glitzhd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/glitzhd"
+                    data-name="GlitzHD"
+                >
+
+                    <div class="artist-fallback">
+                        GH
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="GlitzHD"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            04
+                        </span>
+
+                        <span class="artist-name">
+                            GlitzHD
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 05 -->
 
                 <a
                     class="artist-card"
                     href="https://soundcloud.com/marinhomsic"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/marinhomsic"
+                    data-name="Marinho"
                 >
 
+                    <div class="artist-fallback">
+                        M
+                    </div>
+
+                    <div class="artist-loading"></div>
+
                     <img
-                        src="https://i1.sndcdn.com/artworks-000616698883-0s2j7h-t500x500.jpg"
+                        class="artist-image"
                         alt="Marinho"
                     >
 
-                    <div class="artist-info">
+                    <div class="artist-overlay">
 
-                        <div class="artist-name">
+                        <span class="artist-index">
+                            05
+                        </span>
+
+                        <span class="artist-name">
                             Marinho
-                        </div>
+                        </span>
 
-                        <div class="artist-type">
-                            Bass Music
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <!-- CELLARIUM -->
-
-                <a
-                    class="artist-card"
-                    href="https://soundcloud.com/chiefkidmusic"
-                    target="_blank"
-                    rel="noopener"
-                >
-
-                    <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="Cellarium"
-                    >
-
-                    <div class="artist-info">
-
-                        <div class="artist-name">
-                            Cellarium
-                        </div>
-
-                        <div class="artist-type">
-                            Drum & Bass
-                        </div>
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
 
                     </div>
 
                 </a>
 
 
-                <!-- CHIEFKID -->
+                <!-- 06 -->
 
                 <a
                     class="artist-card"
-                    href="https://soundcloud.com/chiefkidmusic"
+                    href="https://soundcloud.com/zentto"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/zentto"
+                    data-name="Zentto"
                 >
 
+                    <div class="artist-fallback">
+                        Z
+                    </div>
+
+                    <div class="artist-loading"></div>
+
                     <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="ChiefKid Collective"
+                        class="artist-image"
+                        alt="Zentto"
                     >
 
-                    <div class="artist-info">
+                    <div class="artist-overlay">
 
-                        <div class="artist-name">
-                            ChiefKid
-                        </div>
+                        <span class="artist-index">
+                            06
+                        </span>
 
-                        <div class="artist-type">
-                            Collective
-                        </div>
+                        <span class="artist-name">
+                            Zentto
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
 
                     </div>
 
                 </a>
 
 
-                <!-- COLLECTIVE -->
+                <!-- 07 -->
 
                 <a
                     class="artist-card"
-                    href="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
+                    href="https://soundcloud.com/aronsho"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/aronsho"
+                    data-name="Aronsho"
                 >
 
+                    <div class="artist-fallback">
+                        A
+                    </div>
+
+                    <div class="artist-loading"></div>
+
                     <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="ChiefKid Releases"
+                        class="artist-image"
+                        alt="Aronsho"
                     >
 
-                    <div class="artist-info">
+                    <div class="artist-overlay">
 
-                        <div class="artist-name">
-                            ChiefKid Files
-                        </div>
+                        <span class="artist-index">
+                            07
+                        </span>
 
-                        <div class="artist-type">
-                            Releases / Archive
-                        </div>
+                        <span class="artist-name">
+                            Aronsho
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
 
                     </div>
 
                 </a>
 
 
-                <!-- SOUND CLOUD -->
+                <!-- 08 -->
 
                 <a
                     class="artist-card"
-                    href="https://soundcloud.com/chiefkidmusic"
+                    href="https://soundcloud.com/erukuserasu"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/erukuserasu"
+                    data-name="Erukuserasu"
                 >
 
+                    <div class="artist-fallback">
+                        E
+                    </div>
+
+                    <div class="artist-loading"></div>
+
                     <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="ChiefKid Music"
+                        class="artist-image"
+                        alt="Erukuserasu"
                     >
 
-                    <div class="artist-info">
+                    <div class="artist-overlay">
 
-                        <div class="artist-name">
-                            More Artists
-                        </div>
+                        <span class="artist-index">
+                            08
+                        </span>
 
-                        <div class="artist-type">
-                            Explore ChiefKid
-                        </div>
+                        <span class="artist-name">
+                            Erukuserasu
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 09 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/chrx7-377306345"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/chrx7-377306345"
+                    data-name="CHRX7"
+                >
+
+                    <div class="artist-fallback">
+                        C7
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="CHRX7"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            09
+                        </span>
+
+                        <span class="artist-name">
+                            CHRX7
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 10 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/cazsem"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/cazsem"
+                    data-name="Cazsem"
+                >
+
+                    <div class="artist-fallback">
+                        C
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Cazsem"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            10
+                        </span>
+
+                        <span class="artist-name">
+                            Cazsem
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 11 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/from-the-sky-553525833"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/from-the-sky-553525833"
+                    data-name="From The Sky"
+                >
+
+                    <div class="artist-fallback">
+                        FTS
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="From The Sky"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            11
+                        </span>
+
+                        <span class="artist-name">
+                            From The Sky
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 12 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/no-name-93487397"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/no-name-93487397"
+                    data-name="No Name"
+                >
+
+                    <div class="artist-fallback">
+                        NN
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="No Name"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            12
+                        </span>
+
+                        <span class="artist-name">
+                            No Name
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 13 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/numin-to-the-world"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/numin-to-the-world"
+                    data-name="Numin To The World"
+                >
+
+                    <div class="artist-fallback">
+                        N
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Numin To The World"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            13
+                        </span>
+
+                        <span class="artist-name">
+                            Numin To The World
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 14 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/siriuxdubs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/siriuxdubs"
+                    data-name="Siriux Dubs"
+                >
+
+                    <div class="artist-fallback">
+                        SD
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Siriux Dubs"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            14
+                        </span>
+
+                        <span class="artist-name">
+                            Siriux Dubs
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 15 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/mosirax"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/mosirax"
+                    data-name="Mosirax"
+                >
+
+                    <div class="artist-fallback">
+                        M
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Mosirax"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            15
+                        </span>
+
+                        <span class="artist-name">
+                            Mosirax
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 16 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/dietogetherinvenus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/dietogetherinvenus"
+                    data-name="Die Together In Venus"
+                >
+
+                    <div class="artist-fallback">
+                        DTV
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Die Together In Venus"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            16
+                        </span>
+
+                        <span class="artist-name">
+                            Die Together In Venus
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 17 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/t3g0_music"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/t3g0_music"
+                    data-name="T3G0"
+                >
+
+                    <div class="artist-fallback">
+                        T3
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="T3G0"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            17
+                        </span>
+
+                        <span class="artist-name">
+                            T3G0
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 18 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/imraptormusic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/imraptormusic"
+                    data-name="Raptor"
+                >
+
+                    <div class="artist-fallback">
+                        R
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Raptor"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            18
+                        </span>
+
+                        <span class="artist-name">
+                            Raptor
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 19 -->
+
+                <a
+                    class="artist-card"
+                    href="https://soundcloud.com/mental-dawn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-soundcloud="https://soundcloud.com/mental-dawn"
+                    data-name="Mental Dawn"
+                >
+
+                    <div class="artist-fallback">
+                        MD
+                    </div>
+
+                    <div class="artist-loading"></div>
+
+                    <img
+                        class="artist-image"
+                        alt="Mental Dawn"
+                    >
+
+                    <div class="artist-overlay">
+
+                        <span class="artist-index">
+                            19
+                        </span>
+
+                        <span class="artist-name">
+                            Mental Dawn
+                        </span>
+
+                        <span class="artist-link">
+                            SoundCloud ↗
+                        </span>
 
                     </div>
 
@@ -2040,87 +2106,75 @@
              STEMS / REMIXES
         ====================================================== -->
 
-        <section
-            id="stems"
-            class="section"
-        >
+        <section id="stems">
 
             <div class="section-header">
 
-                <h2 class="section-title">
-                    Stems / Remixes
-                </h2>
+                <div>
 
-                <span class="section-number">
-                    03 / 04
-                </span>
+                    <div class="section-number">
+                        03 / COMMUNITY
+                    </div>
+
+                    <h2 class="section-title">
+                        Stems / Remixes
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Explore collaborative material, stems and
+                    remix opportunities from the collective.
+                </p>
 
             </div>
 
 
-            <div class="remix-grid">
+            <div class="stems-container">
 
 
-                <article class="remix-card">
+                <div class="stems-box">
 
-                    <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="ChiefKid music"
+                    <h3>
+                        Stems
+                    </h3>
+
+                    <p>
+                        Access selected stems and production
+                        material made available by ChiefKid
+                        artists for creative collaborations.
+                    </p>
+
+                    <a
+                        href="#contact"
+                        class="stems-button"
                     >
+                        REQUEST ACCESS
+                    </a>
 
-                    <div class="remix-content">
-
-                        <div class="remix-tag">
-                            CHIEFKID
-                        </div>
-
-                        <div class="remix-title">
-                            Remix The Music
-                        </div>
-
-                        <a
-                            href="https://soundcloud.com/chiefkidmusic"
-                            class="remix-button"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Explore Releases
-                        </a>
-
-                    </div>
-
-                </article>
+                </div>
 
 
-                <article class="remix-card">
+                <div class="stems-box">
 
-                    <img
-                        src="https://i1.sndcdn.com/artworks-wchEfvvOCRLE0y1b-CDEReQ-t1080x1080.jpg"
-                        alt="ChiefKid Collective"
+                    <h3>
+                        Remixes
+                    </h3>
+
+                    <p>
+                        Create your own interpretation of
+                        ChiefKid releases and connect your
+                        sound with the collective.
+                    </p>
+
+                    <a
+                        href="#contact"
+                        class="stems-button"
                     >
+                        GET IN TOUCH
+                    </a>
 
-                    <div class="remix-content">
-
-                        <div class="remix-tag">
-                            COLLECTIVE
-                        </div>
-
-                        <div class="remix-title">
-                            ChiefKid Files
-                        </div>
-
-                        <a
-                            href="https://soundcloud.com/chiefkidmusic/sets/chiefkid-files"
-                            class="remix-button"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Open Archive
-                        </a>
-
-                    </div>
-
-                </article>
+                </div>
 
 
             </div>
@@ -2129,116 +2183,121 @@
 
 
         <!-- =====================================================
-             SUBMISSION
+             CONTACT
         ====================================================== -->
 
         <section
             id="contact"
-            class="section"
+            class="contact-section"
         >
 
-            <div class="submission">
+            <div class="section-number">
+                04 / CONTACT
+            </div>
 
-                <div class="section-number">
-                    04 / 04
-                </div>
+            <div class="contact-content">
 
-
-                <h2 class="submission-title">
-                    Submit<br>
-                    Your Music.
+                <h2 class="contact-title">
+                    Let's<br>
+                    Connect
                 </h2>
 
+                <div class="contact-right">
 
-                <p class="submission-text">
+                    <p>
+                        For demos, collaborations, label
+                        inquiries, stems, remixes or other
+                        ChiefKid Collective related projects,
+                        get in touch.
+                    </p>
 
-                    CHIEFKID COLLECTIVE is open to electronic music,
-                    bass music, hybrid trap, drum & bass and experimental
-                    sounds. Send us your music, demos and releases.
+                    <a
+                        class="contact-email"
+                        href="mailto:chiefkidmusic@gmail.com"
+                    >
+                        CHIEFKIDMUSIC@GMAIL.COM
+                    </a>
 
-                </p>
-
-
-                <a
-                    class="submission-email"
-                    href="mailto:contact@chiefkidmusic.com"
-                >
-                    contact@chiefkidmusic.com
-                </a>
+                </div>
 
             </div>
 
         </section>
-
 
     </main>
 
 
     <!-- =========================================================
          FOOTER
-    ========================================================= -->
+    ========================================================== -->
 
     <footer>
 
-        <div class="footer-left">
-            © 2020 CHIEFKID COLLECTIVE
-        </div>
+        <a
+            href="#home"
+            class="footer-logo"
+        >
+
+            <img
+                src="logo blanco.png"
+                alt="ChiefKid Collective"
+            >
+
+        </a>
 
 
-        <div class="socials">
+        <div class="footer-socials">
 
             <a
                 href="https://soundcloud.com/chiefkidmusic"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
             >
                 SoundCloud
             </a>
 
             <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/chiefkidmusic/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
             >
                 Instagram
             </a>
 
             <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener"
+                href="#contact"
             >
-                YouTube
+                Contact
             </a>
 
-            <a
-                href="https://twitter.com/ChiefKidMusic"
-                target="_blank"
-                rel="noopener"
-            >
-                X
-            </a>
+        </div>
 
+
+        <div class="footer-copy">
+            © 2026 CHIEFKID COLLECTIVE
         </div>
 
     </footer>
 
 
     <!-- =========================================================
-         HEADER SCROLL
-    ========================================================= -->
+         JAVASCRIPT
+    ========================================================== -->
 
     <script>
 
-        const header =
-            document.getElementById("mainHeader");
+        /* =====================================================
+           HEADER SCROLL
+        ====================================================== */
 
+        const header =
+            document.getElementById("site-header");
 
         window.addEventListener(
             "scroll",
             () => {
 
-                if (window.scrollY > 50) {
+                if (window.scrollY > 40) {
 
                     header.classList.add("scrolled");
 
@@ -2248,12 +2307,252 @@
 
                 }
 
+            },
+            {
+                passive: true
             }
         );
+
+
+        /* =====================================================
+           SOUNDCLOUD ARTIST IMAGES
+           
+           SoundCloud provides oEmbed for embeds/profile URLs.
+           We request the profile metadata and use the returned
+           thumbnail when available.
+        ====================================================== */
+
+        const artistCards =
+            document.querySelectorAll(
+                ".artist-card[data-soundcloud]"
+            );
+
+
+        async function loadArtistImage(card) {
+
+            const soundcloudURL =
+                card.dataset.soundcloud;
+
+            const image =
+                card.querySelector(".artist-image");
+
+
+            try {
+
+                const endpoint =
+                    "https://soundcloud.com/oembed" +
+                    "?format=json" +
+                    "&url=" +
+                    encodeURIComponent(soundcloudURL);
+
+
+                const response =
+                    await fetch(
+                        endpoint,
+                        {
+                            method: "GET",
+                            mode: "cors",
+                            cache: "force-cache"
+                        }
+                    );
+
+
+                if (!response.ok) {
+                    throw new Error(
+                        "SoundCloud oEmbed request failed"
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                /*
+                 * SoundCloud oEmbed can return a thumbnail.
+                 */
+
+                if (
+                    data &&
+                    data.thumbnail_url
+                ) {
+
+                    image.onload =
+                        () => {
+
+                            card.classList.add(
+                                "loaded"
+                            );
+
+                        };
+
+                    image.onerror =
+                        () => {
+
+                            card.classList.remove(
+                                "loaded"
+                            );
+
+                        };
+
+                    image.src =
+                        data.thumbnail_url;
+
+                    return;
+
+                }
+
+
+                /*
+                 * Some responses can expose an image
+                 * through the embedded HTML.
+                 */
+
+                if (
+                    data &&
+                    typeof data.html === "string"
+                ) {
+
+                    const match =
+                        data.html.match(
+                            /https?:\/\/[^"' ]+\.(?:jpg|jpeg|png|webp)/i
+                        );
+
+
+                    if (match) {
+
+                        image.onload =
+                            () => {
+
+                                card.classList.add(
+                                    "loaded"
+                                );
+
+                            };
+
+                        image.src =
+                            match[0];
+
+                        return;
+
+                    }
+
+                }
+
+
+            } catch (error) {
+
+                /*
+                 * Do not show fake images.
+                 * The fallback initials remain visible.
+                 */
+
+                console.warn(
+                    "Could not load SoundCloud image:",
+                    soundcloudURL
+                );
+
+            }
+
+        }
+
+
+        artistCards.forEach(
+            (card, index) => {
+
+                /*
+                 * Small stagger prevents all requests
+                 * from firing at exactly the same time.
+                 */
+
+                setTimeout(
+                    () => {
+                        loadArtistImage(card);
+                    },
+                    index * 80
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           SMOOTH INTERNAL LINKS
+        ====================================================== */
+
+        document
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach(
+                link => {
+
+                    link.addEventListener(
+                        "click",
+                        event => {
+
+                            const targetID =
+                                link.getAttribute(
+                                    "href"
+                                );
+
+                            if (
+                                targetID === "#"
+                            ) {
+                                return;
+                            }
+
+                            const target =
+                                document.querySelector(
+                                    targetID
+                                );
+
+                            if (!target) {
+                                return;
+                            }
+
+                            event.preventDefault();
+
+                            target.scrollIntoView(
+                                {
+                                    behavior: "smooth",
+                                    block: "start"
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           BACKGROUND VIDEO
+        ====================================================== */
+
+        const backgroundVideo =
+            document.querySelector(
+                ".background-video"
+            );
+
+
+        if (backgroundVideo) {
+
+            backgroundVideo.play()
+                .catch(
+                    () => {
+                        /*
+                         * Browser autoplay restrictions
+                         * are handled silently.
+                         */
+                    }
+                );
+
+        }
 
     </script>
 
 
 </body>
-
 </html>
